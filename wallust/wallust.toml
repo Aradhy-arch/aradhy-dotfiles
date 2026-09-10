@@ -1,0 +1,14 @@
+# wallust v3.5
+
+backend = "fastresize"
+color_space = "labmixed"
+palette = "saliencedark"
+
+[templates]
+alacritty = { template = 'alacritty.toml', target = '~/.config/alacritty/colors.toml' }
+starship = { template = 'starship.toml', target = '~/.config/starship.toml' }
+hyprpaper = { template = 'set_bg.sh', target = '~/.config/wallust/set_bg.sh' }
+
+[hooks]
+set_bg = 'sh ~/.config/wallust/set_bg.sh'
+# Run commands when wallust is invoked. Useful to avoid scripting.
