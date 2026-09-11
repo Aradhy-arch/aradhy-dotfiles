@@ -1,0 +1,6 @@
+[Unit]
+Description=Daily Wallpaper Rotation via Wallust
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/daily-wall

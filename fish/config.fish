@@ -42,12 +42,18 @@ if status is-interactive
     # Random Config Shit
     alias sddmtheme "~/.config/random_conf_shit/sddmtheme.sh"
     alias formatduh "~/.config/random_conf_shit/usb_formatter.sh"
+    alias next "~/.local/daily-wall"
 
     # Fun Stuff
-
+    alias tre "cbonsai"
+    alias pi "pipes.sh"
+    alias cm "cmatrix"
+    
     # ==========================================================================
     # FUNCTIONS
     # ==========================================================================
     # You can add your custom functions here :D
 
 end
+
+fish_add_path /home/aradhy/.spicetify

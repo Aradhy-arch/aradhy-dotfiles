@@ -1,0 +1,9 @@
+[Unit]
+Description=Run daily wallpaper rotation
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+
+[Install]
+WantedBy=timers.target
