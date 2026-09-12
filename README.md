@@ -15,19 +15,21 @@
 
 ### 🖥️ Overview
 
-A minimal, keyboard-driven desktop workspace built on top of **Arch Linux**. Styled primarily around the **Catppuccin** palette with a focus on responsiveness and a clutter-free environment.
+My personal desktop setup on **Arch Linux**, built around Hyprland and themed with **Catppuccin**.
+
+The main focus here is how **Wallust** ties the whole desktop together:
+* Running `wallust run /path/to/image` takes the colors from your wallpaper and automatically syncs them across Alacritty, the Starship prompt, and Fastfetch.
+* If you don't like how a palette turns out, I added a custom `wallust --restore` flag that puts your default configs back instantly.
+* Wallpapers rotate once a day via a systemd timer. If you hate the current one, typing `next` in the terminal skips to another. (The auto-rotation pauses if you've manually set a Wallust template so it doesn't overwrite your theme).
+
+---
 
 ### 📸 Screenshots
 
 ![Desktop Preview](./Screenshots/desktop.png)
 ![Fastfetch Specs](./Screenshots/fastfetch.png)
 
-### Features xD
-
-The main attraction of these dotfiles is alacritty and wallust tho my fish config is awesome! I have set it up so that after running `wallust run /path/to/your/image`, it dynamically updates your wallpaper, your fastfetch, starship prompt, and alacritty config. But what if you didin't loke it? so for that reason I spent hours creating a custom flag for wallust which is `wallust --restore` It basically restores everything back to normal :D
-
-It also changes your wallpaper every day and if you wanna skip one? Just type `next` in the terminal and hit enter!
-Also, the wallpaper changing stops if you have applied a wallust template ;D
+---
 
 ### ⚙️ System Details
 
@@ -41,39 +43,40 @@ Also, the wallpaper changing stops if you have applied a wallust template ;D
 
 ---
 
-## 📂 Repository Structure
+## 🚀 Installation
 
-```text
-aradhy-dotfiles/
-├── .config/
-│   ├── alacritty/       # Alacritty terminal configuration & colors
-│   ├── fish/            # Fish shell functions, aliases, & config
-│   ├── starship.toml    # Custom cross-shell prompt configuration
-│   └── ...              # Other application configs
-├── scripts/             # Useful maintenance & helper scripts
-└── README.md
+> [!WARNING]
+> Before running the script or moving files around, back up anything important inside `~/.config/`.
+
+### Automatic Install:-
+
+Just clone and run the script:
+
+```bash
+git clone --depth=1 [https://github.com/Aradhy-arch/aradhy-dotfiles](https://github.com/Aradhy-arch/aradhy-dotfiles)
+cd aradhy-dotfiles
+./install.sh
 ```
 
 ---
 
-## 🚀 Installation
+### 💬 Telling you random shit before you go manual...
 
-> [!WARNING]
-> Before cloning or linking any configurations, ensure you back up your existing files (`~/.config/`).
+* **Why manual?** If you prefer not to run a bash script blindly, every step is broken down below so you can run the commands yourself.
+* **Skipping wallpapers:** The `next` command is an alias to jump to the next background whenever you feel like changing it up.
+* **Why no NixOS guide?** These configs are built specifically for an Arch filesystem layout. Porting it to Nix flakes would just complicate things unnecessarily.
 
-### Automatic Install:-
+---
 
-```bash
-git clone --depth=1 https://github.com/Aradhy-arch/aradhy-dotfiles
-cd ~/aradhy-dotfiles
-./install.sh
-```
 ### Manual Install:-
-1. Clone the repo:
+
+1. **Clone the repo:**
 ```bash
-git clone --depth=1 https://github.com/Aradhy-arch/aradhy-dotfiles
+git clone --depth=1 [https://github.com/Aradhy-arch/aradhy-dotfiles](https://github.com/Aradhy-arch/aradhy-dotfiles)
+cd aradhy-dotfiles
 ```
-2. Move the folders into `~/.config`:-
+
+2. **Copy configuration folders into `~/.config`:**
 ```bash
 cp -r alacritty ~/.config
 cp -r fastfetch ~/.config
@@ -84,30 +87,35 @@ cp -r systemd ~/.config
 cp -r wallust ~/.config
 cp -r waybar ~/.config
 ```
-3. Move the rest of the files:-
+
+3. **Move standalone config files and binaries:**
 ```bash
 cp daily-wall ~/.local
 cp starship.catppuccin.toml ~/.config
 cp starship.toml ~/.config
 ```
-4. Apply the SDDM theme:-
+
+4. **Apply the SDDM theme:**
 ```bash
 sudo cp -r sddm-astronaut-theme /usr/share/sddm/themes/
 sudo mkdir -p /etc/sddm.conf.d
 echo -e "[Theme]\nCurrent=sddm-astronaut-theme" | sudo tee /etc/sddm.conf.d/theme.conf > /dev/null
 ```
-5. Make stuff executable:-
+
+5. **Make your scripts executable:**
 ```bash
 chmod +x ~/.config/random_conf_shit/sddmtheme.sh
 chmod +x ~/.config/random_conf_shit/usb_formatter.sh
 chmod +x ~/.local/daily-wall
 chmod +x ~/.config/wallust/templates/set_bg.sh
 ```
+
 ---
 
 ## 🎨 Credits & Acknowledgments
 
-I did not create the wallpapers, assets, or third-party artwork included in this repository. If you are the original artist or creator of any work featured here, please reach out by opening an issue or contacting me—I will gladly add proper credits and links to your work!
+* Huge thanks to **[Keyitdev](https://github.com/Keyitdev)** for creating the awesome [sddm-astronaut-theme](https://github.com/Keyitdev/sddm-astronaut-theme).
+* I did not create the wallpapers, assets, or third-party artwork included in this repository. If you are the original artist or creator of any work featured here, please reach out by opening an issue or contacting me—I will gladly add proper credits and links to your work!
 
 ---
 
