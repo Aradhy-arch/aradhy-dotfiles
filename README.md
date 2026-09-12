@@ -13,7 +13,7 @@
 
 ---
 
-## 🖥️ Overview
+### 🖥️ Overview
 
 A minimal, keyboard-driven desktop workspace built on top of **Arch Linux**. Styled primarily around the **Catppuccin** palette with a focus on responsiveness and a clutter-free environment.
 
@@ -21,6 +21,10 @@ A minimal, keyboard-driven desktop workspace built on top of **Arch Linux**. Sty
 
 ![Desktop Preview](./Screenshots/desktop.png)
 ![Fastfetch Specs](./Screenshots/fastfetch.png)
+
+### Features xD
+
+The main attraction of these dotfiles is alacritty and wallust tho my fish config is awesome! I have set it up so that after running `wallust run /path/to/your/image`, it dynamically updates your wallpaper, your fastfetch, starship prompt, and alacritty config. But what if you didin't loke it? so for that reason I spent hours creating a custom flag for wallust which is `wallust --restore` It basically restores everything back to normal :D
 
 ### ⚙️ System Details
 
@@ -67,8 +71,35 @@ cd ~/aradhy-dotfiles
 git clone --depth=1 https://github.com/Aradhy-arch/aradhy-dotfiles
 ```
 2. Move the folders into `~/.config`:-
-
-
+```bash
+cp -r alacritty ~/.config
+cp -r fastfetch ~/.config
+cp -r fish ~/.config
+cp -r hypr ~/.config
+cp -r random_conf_shit ~/.config
+cp -r systemd ~/.config
+cp -r wallust ~/.config
+cp -r waybar ~/.config
+```
+3. Move the rest of the files:-
+```bash
+cp daily-wall ~/.local
+cp starship.catppuccin.toml ~/.config
+cp starship.toml ~/.config
+```
+4. Apply the SDDM theme:-
+```bash
+sudo cp -r sddm-astronaut-theme /usr/share/sddm/themes/
+sudo mkdir -p /etc/sddm.conf.d
+echo -e "[Theme]\nCurrent=sddm-astronaut-theme" | sudo tee /etc/sddm.conf.d/theme.conf > /dev/null
+```
+5. Make stuff executable:-
+```bash
+chmod +x ~/.config/random_conf_shit/sddmtheme.sh
+chmod +x ~/.config/random_conf_shit/usb_formatter.sh
+chmod +x ~/.local/daily-wall
+chmod +x ~/.config/wallust/templates/set_bg.sh
+```
 ---
 
 ## 🎨 Credits & Acknowledgments
