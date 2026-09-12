@@ -22,12 +22,12 @@ CHOSEN="${FILES[$INDEX]}"
 
 # ONLY change the wallpaper and update hyprpaper.conf (Do NOT run wallust)
 hyprctl hyprpaper preload "$CHOSEN" >/dev/null 2>&1
-hyprctl hyprpaper wallpaper "LVDS-1,$CHOSEN" >/dev/null 2>&1
+hyprctl hyprpaper wallpaper ",$CHOSEN" >/dev/null 2>&1
 hyprctl hyprpaper unload all >/dev/null 2>&1 || true
 
 cat << EOF > "$HOME/.config/hypr/hyprpaper.conf"
 wallpaper {
-    monitor = LVDS-1
+    monitor =
     path = $CHOSEN
     fit_mode = cover
 }
