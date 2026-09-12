@@ -53,7 +53,7 @@ aradhy-dotfiles/
 ### 1. Clone the repository
 
 ```bash
-git clone [https://github.com/Aradhy-arch/aradhy-dotfiles.git](https://github.com/Aradhy-arch/aradhy-dotfiles.git) ~/aradhy-dotfiles
+git clone --depth=1 https://github.com/Aradhy-arch/aradhy-dotfiles
 cd ~/aradhy-dotfiles
 ```
 
