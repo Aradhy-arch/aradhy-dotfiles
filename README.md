@@ -19,7 +19,7 @@ My personal desktop setup on **Arch Linux**, built around Hyprland and themed wi
 
 The main focus here is how **Wallust** ties the whole desktop together:
 * Running `wallust run /path/to/image` takes the colors from your wallpaper and automatically syncs them across Alacritty, the Starship prompt, and Fastfetch.
-* If you don't like how a palette turns out, I added a custom `wallust --restore` flag that puts your default configs back instantly.
+* **Instant Regret Button:** *If you don't like how a palette turns out, I added a custom `wallust --restore` flag that puts your default configs back instantly.
 * Wallpapers rotate once a day via a systemd timer. If you hate the current one, typing `next` in the terminal skips to another. (The auto-rotation pauses if you've manually set a Wallust template so it doesn't overwrite your theme).
 
 ---
