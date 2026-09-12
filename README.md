@@ -63,8 +63,10 @@ cd aradhy-dotfiles
 ### 💬 Telling you random shit before you go manual...
 
 * **Why manual?** If you prefer not to run a bash script blindly, every step is broken down below so you can run the commands yourself.
+
 * **Skipping wallpapers:** The `next` command is an alias to jump to the next background whenever you feel like changing it up.
-* **Why no NixOS guide?** These configs are built specifically for an Arch filesystem layout. Porting it to Nix flakes would just complicate things unnecessarily.
+
+* **Why no NixOS guide?** These configs are built specifically for an Arch filesystem layout. Porting it to Nix flakes would just fry my brain because I'm just a 13-year-old,hope you like it :D
 
 ---
 
