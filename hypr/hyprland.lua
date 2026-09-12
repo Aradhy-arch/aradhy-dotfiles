@@ -19,6 +19,7 @@ hl.monitor({
 local terminal = "alacritty"
 local fileManager = "thunar"
 local menu = "rofi -show drun"
+local browser = "helium-browser"
 
 
 -------------------
