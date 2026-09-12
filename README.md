@@ -49,12 +49,20 @@ aradhy-dotfiles/
 > [!WARNING]
 > Before cloning or linking any configurations, ensure you back up your existing files (`~/.config/`).
 
-### 1. Clone the repository
+### Automatic Install:-
 
 ```bash
 git clone --depth=1 https://github.com/Aradhy-arch/aradhy-dotfiles
 cd ~/aradhy-dotfiles
+./install.sh
 ```
+### Manual Install:-
+1. Clone the repo:
+```bash
+git clone --depth=1 https://github.com/Aradhy-arch/aradhy-dotfiles
+```
+2. Move the folders into `~/.config`:-
+
 
 ---
 
