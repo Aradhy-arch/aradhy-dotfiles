@@ -26,6 +26,7 @@ A minimal, keyboard-driven desktop workspace built on top of **Arch Linux**. Sty
 | **Shell** | [Fish Shell](https://fishshell.com/) |
 | **Prompt** | [Starship](https://starship.rs/) |
 | **Colorscheme** | [Catppuccin](https://github.com/catppuccin/catppuccin) |
+| **Font** | JetBrainsMono Nerd Font |
 
 ---
 
@@ -40,3 +41,32 @@ aradhy-dotfiles/
 │   └── ...              # Other application configs
 ├── scripts/             # Useful maintenance & helper scripts
 └── README.md
+```
+
+---
+
+## 🚀 Installation
+
+> [!WARNING]
+> Before cloning or linking any configurations, ensure you back up your existing files (`~/.config/`).
+
+### 1. Clone the repository
+
+```bash
+git clone [https://github.com/Aradhy-arch/aradhy-dotfiles.git](https://github.com/Aradhy-arch/aradhy-dotfiles.git) ~/aradhy-dotfiles
+cd ~/aradhy-dotfiles
+```
+
+---
+
+## 🎨 Credits & Acknowledgments
+
+I did not create the wallpapers, assets, or third-party artwork included in this repository. If you are the original artist or creator of any work featured here, please reach out by opening an issue or contacting me—I will gladly add proper credits and links to your work!
+
+---
+
+<div align="center">
+
+*Configured and maintained by **[Aradhy](https://github.com/Aradhy-arch)**.*
+
+</div>
