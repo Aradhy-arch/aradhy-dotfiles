@@ -13,7 +13,7 @@ sudo pacman -Sy --needed --noconfirm gum git base-devel > /dev/null 2>&1
 
 PACMAN_PKGS=(
     fish btop zoxide fzf fastfetch starship eza bat micro neovim ark
-    hyprland hyprpaper hyprlock grim slurp waybar rofi hyprpolkitagent
+    hyprland hyprpaper hyprlock cliphist grim slurp waybar rofi hyprpolkitagent
     xdg-desktop-portal-hyprland xdg-desktop-portal-gtk qt5-wayland qt6-wayland
     pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber
     bluez bluez-utils blueman
@@ -62,7 +62,6 @@ gum style --foreground 220 "➔ Applying configurations..."
 mkdir -p ~/.config
 mkdir -p ~/.local
 
-# Directories need the -r flag to copy successfully
 cp -r alacritty ~/.config
 cp -r fastfetch ~/.config
 cp -r fish ~/.config
@@ -71,7 +70,7 @@ cp -r random_conf_shit ~/.config
 cp -r systemd ~/.config
 cp -r wallust ~/.config
 cp -r waybar ~/.config
-cp -r daily-wall ~/.local
+cp daily-wall ~/.local
 
 # Standard files
 cp starship.catppuccin.toml ~/.config
@@ -88,6 +87,7 @@ gum style --foreground 220 "➔ Setting script permissions..."
 chmod +x ~/.config/random_conf_shit/sddmtheme.sh
 chmod +x ~/.config/random_conf_shit/usb_formatter.sh
 chmod +x ~/.local/daily-wall
+chmod +x ~/.config/wallust/templates/set_bg.sh
 
 # 8. Enabling Services
 gum style --foreground 220 "➔ Enabling Services (SDDM, Bluetooth, & Daily Wallpaper)..."

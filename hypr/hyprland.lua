@@ -266,6 +266,7 @@ end
 hl.bind("PRINT", hl.dsp.exec_cmd([[bash -c 'grim -g "$(slurp)" - | wl-copy']]))
 hl.bind(mainMod .. " + CTRL + S", hl.dsp.exec_cmd("bash -c 'grim -g \"$(slurp)\" /home/aradhy/Pictures/Screenshots/$(date +%Y%m%d_%H%M%S).png'"))
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd([[bash -c 'cliphist list | rofi -dmenu -p "Clipboard" -config ~/.config/rofi/config.rasi | cliphist decode | wl-copy']]))
+hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("$HOME/.config/hypr/rofi-scripts/wifi-menu.sh"))
 
 -- Example special workspace (scratchpad)
 hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special("magic"))
@@ -286,7 +287,7 @@ hl.bind("XF86AudioMute",        hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_S
 hl.bind("XF86AudioMicMute",     hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),   { locked = true, repeating = true })
 hl.bind("XF86MonBrightnessUp",  hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"),                  { locked = true, repeating = true })
 hl.bind("XF86MonBrightnessDown",hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"),                  { locked = true, repeating = true })
-hl.bind("XF86PowerOff",         hl.dsp.exec_cmd("$HOME/.config/hypr/power_menu.sh"))
+hl.bind("XF86PowerOff",         hl.dsp.exec_cmd("$HOME/.config/hypr/rofi-scripts/power_menu.sh"))
 
 -- Requires playerctl
 hl.bind("XF86AudioNext",  hl.dsp.exec_cmd("playerctl next"),       { locked = true })
