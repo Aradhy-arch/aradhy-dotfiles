@@ -26,7 +26,6 @@ A minimal, keyboard-driven desktop workspace built on top of **Arch Linux**. Sty
 | **Shell** | [Fish Shell](https://fishshell.com/) |
 | **Prompt** | [Starship](https://starship.rs/) |
 | **Colorscheme** | [Catppuccin](https://github.com/catppuccin/catppuccin) |
-| **Font** | JetBrainsMono Nerd Font |
 
 ---
 
