@@ -66,6 +66,6 @@ I did not create the wallpapers, assets, or third-party artwork included in this
 
 <div align="center">
 
-*Configured and maintained by **[Aradhy](https://github.com/Aradhy-arch)**.*
+*Configured and maintained by **[Aradhy Jain](https://github.com/Aradhy-arch)**.*
 
 </div>
