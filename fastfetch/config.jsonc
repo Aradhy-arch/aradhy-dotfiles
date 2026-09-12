@@ -25,7 +25,7 @@
     },
     {
       "type": "gpu",
-      "key": "│ ├",
+      "key": "│ ├󰢮",
       "detectionMethod": "pci",
       "format": "Integrated Ghraphics :(",
       "keyColor": "green"
