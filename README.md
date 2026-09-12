@@ -19,8 +19,8 @@ A minimal, keyboard-driven desktop workspace built on top of **Arch Linux**. Sty
 
 ### 📸 Screenshots
 
-![Desktop Preview](./screenshots/desktop.png)
-![Fastfetch Specs](./screenshots/fastfetch.png)
+![Desktop Preview](./Screenshots/desktop.png)
+![Fastfetch Specs](./Screenshots/fastfetch.png)
 
 ### ⚙️ System Details
 
