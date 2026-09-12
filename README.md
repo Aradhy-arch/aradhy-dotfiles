@@ -26,6 +26,9 @@ A minimal, keyboard-driven desktop workspace built on top of **Arch Linux**. Sty
 
 The main attraction of these dotfiles is alacritty and wallust tho my fish config is awesome! I have set it up so that after running `wallust run /path/to/your/image`, it dynamically updates your wallpaper, your fastfetch, starship prompt, and alacritty config. But what if you didin't loke it? so for that reason I spent hours creating a custom flag for wallust which is `wallust --restore` It basically restores everything back to normal :D
 
+It also changes your wallpaper every day and if you wanna skip one? Just type `next` in the terminal and hit enter!
+Also, the wallpaper changing stops if you have applied a wallust template ;D
+
 ### ⚙️ System Details
 
 | Component | Choice |
