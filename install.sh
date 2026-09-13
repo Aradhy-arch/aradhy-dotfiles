@@ -9,7 +9,7 @@ if [ "$EUID" -eq 0 ]; then
 fi
 
 # 1. Prerequisites (Silently install so gum works immediately)
-sudo pacman -Sy --needed --noconfirm gum uzip ttf-iosevka-nerd wget git base-devel > /dev/null 2>&1
+sudo pacman -Sy --needed --noconfirm gum unzip ttf-iosevka-nerd wget git base-devel > /dev/null 2>&1
 
 PACMAN_PKGS=(
     fish btop zoxide fzf fastfetch starship eza bat micro neovim ark
