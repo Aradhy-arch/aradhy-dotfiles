@@ -53,7 +53,7 @@ The main focus here is how **Wallust** ties the whole desktop together:
 Just clone and run the script:
 
 ```bash
-git clone --depth=1 [https://github.com/Aradhy-arch/aradhy-dotfiles](https://github.com/Aradhy-arch/aradhy-dotfiles)
+git clone --depth=1 https://github.com/Aradhy-arch/aradhy-dotfiles
 cd aradhy-dotfiles
 ./install.sh
 ```
@@ -66,15 +66,20 @@ cd aradhy-dotfiles
 
 * **Skipping wallpapers:** The `next` command is an alias to jump to the next background whenever you feel like changing it up.
 
-* **Why no NixOS guide?** These configs are built specifically for an Arch filesystem layout. Porting it to Nix flakes would just fry my brain because I'm just a 13-year-old,hope you like it :D
+* **Why no NixOS guide?** These configs are built specifically for an Arch filesystem layout. Porting it to Nix flakes would just fry my brain because I'm just a 13-year-old, hope you like it :D
 
 ---
 
 ### Manual Install:-
+* Before You Install it manually, you need the required packages, just run
+```bash
+sudo pacman -S --needed fish btop zoxide fzf fastfetch starship eza bat micro neovim ark hyprland hyprpaper hyprlock swaync cliphist grim slurp waybar rofi hyprpolkitagent xdg-desktop-portal-hyprland xdg-desktop-portal-gtk qt5-wayland qt6-wayland pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber bluez bluez-utils blueman alacritty discord spotify-launcher mousepad thunar sddm && yay -S --needed cbonsai pipes.sh cmatrix wallust
+```
+This just Installs Audio, and Bluetooth dependencies along with needed apps. And them enable the services I aint gonna tell everything here so just search it up :p
 
 1. **Clone the repo:**
 ```bash
-git clone --depth=1 [https://github.com/Aradhy-arch/aradhy-dotfiles](https://github.com/Aradhy-arch/aradhy-dotfiles)
+git clone --depth=1 https://github.com/Aradhy-arch/aradhy-dotfiles
 cd aradhy-dotfiles
 ```
 
@@ -104,14 +109,21 @@ sudo mkdir -p /etc/sddm.conf.d
 echo -e "[Theme]\nCurrent=sddm-astronaut-theme" | sudo tee /etc/sddm.conf.d/theme.conf > /dev/null
 ```
 
-5. **Make your scripts executable:**
+5. **Make the scripts executable:**
 ```bash
 chmod +x ~/.config/random_conf_shit/sddmtheme.sh
 chmod +x ~/.config/random_conf_shit/usb_formatter.sh
 chmod +x ~/.local/daily-wall
+chmod +x ~/.config/hypr/scripts/wifi-menu.sh
+chmod +x ~/.config/hypr/scripts/power_menu.sh
 chmod +x ~/.config/wallust/templates/set_bg.sh
 ```
-
+6. **Get Wallpapers;**
+```bash
+wget -P ~/Pictures/ https://github.com/Aradhy-arch/aradhy-dotfiles/releases/download/Wallp/Wallpapers.zip
+unzip ~/Pictures/Wallpapers.zip -d ~/Pictures/
+rm ~/Pictures/Wallpapers.zip
+```
 ---
 
 ## 🎨 Credits & Acknowledgments
