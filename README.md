@@ -71,7 +71,7 @@ cd aradhy-dotfiles
 ---
 
 ### Manual Install:-
-* Before You Install it manually, you need the required packages, just run
+* Before You Install it manually, you need the required packages, and the recommended packages, just run:
 ```bash
 sudo pacman -S --needed fish btop zoxide fzf fastfetch starship eza bat micro neovim ark hyprland hyprpaper hyprlock swaync cliphist grim slurp waybar rofi hyprpolkitagent xdg-desktop-portal-hyprland xdg-desktop-portal-gtk qt5-wayland qt6-wayland pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber bluez bluez-utils blueman alacritty discord spotify-launcher mousepad thunar sddm && yay -S --needed cbonsai pipes.sh cmatrix wallust
 ```
@@ -83,7 +83,7 @@ git clone --depth=1 https://github.com/Aradhy-arch/aradhy-dotfiles
 cd aradhy-dotfiles
 ```
 
-2. **Copy configuration folders into `~/.config`:**
+2. **Copy configuration folders into `~/.config` and `~/.local`:**
 ```bash
 cp -r alacritty ~/.config
 cp -r fastfetch ~/.config
@@ -93,6 +93,8 @@ cp -r random_conf_shit ~/.config
 cp -r systemd ~/.config
 cp -r wallust ~/.config
 cp -r waybar ~/.config
+cp -r rofi ~/.config
+mv -r ~/.config/random_conf_shit/rofi ~/.local/share
 ```
 
 3. **Move standalone config files and binaries:**
