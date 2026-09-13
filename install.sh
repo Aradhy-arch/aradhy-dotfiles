@@ -71,6 +71,8 @@ cp -r systemd ~/.config
 cp -r wallust ~/.config
 cp -r waybar ~/.config
 cp daily-wall ~/.local
+cp -r rofi ~/.config
+mv -r ~/.config/random_conf_shit/rofi ~/.local/share
 
 # Standard files
 cp starship.catppuccin.toml ~/.config
