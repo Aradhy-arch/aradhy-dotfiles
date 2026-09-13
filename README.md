@@ -130,7 +130,7 @@ rm ~/Pictures/Wallpapers.zip
 
 ## 🎨 Credits & Acknowledgments
 
-* Huge thanks to **[Keyitdev](https://github.com/Keyitdev)** for creating the awesome [sddm-astronaut-theme](https://github.com/Keyitdev/sddm-astronaut-theme).
+* ⭐ Credit to **[Keyitdev](https://github.com/Keyitdev)** for creating the awesome [sddm-astronaut-theme](https://github.com/Keyitdev/sddm-astronaut-theme).
 * I did not create the wallpapers, assets, or third-party artwork included in this repository. If you are the original artist or creator of any work featured here, please reach out by opening an issue or contacting me—I will gladly add proper credits and links to your work!
 
 ---
