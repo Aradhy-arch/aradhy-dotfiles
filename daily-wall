@@ -20,16 +20,18 @@ fi
 echo "$INDEX" > "$STATE_FILE"
 CHOSEN="${FILES[$INDEX]}"
 
-# ONLY change the wallpaper and update hyprpaper.conf (Do NOT run wallust)
-hyprctl hyprpaper preload "$CHOSEN" >/dev/null 2>&1
-hyprctl hyprpaper wallpaper ",$CHOSEN" >/dev/null 2>&1
-hyprctl hyprpaper unload all >/dev/null 2>&1 || true
+# Apply the wallpaper directly (monitor can be left blank for fallback)
+hyprctl hyprpaper wallpaper ",$CHOSEN"
 
 cat << EOF > "$HOME/.config/hypr/hyprpaper.conf"
 wallpaper {
-    monitor =
+    monitor = 
     path = $CHOSEN
     fit_mode = cover
 }
 splash = false
 EOF
+
+for MON in $(hyprctl monitors | awk '/Monitor/ {print $2}'); do
+    hyprctl hyprpaper wallpaper "$MON,$CHOSEN" >/dev/null 2>&1
+done
