@@ -28,12 +28,9 @@ local browser = "helium-browser"
 
 hl.on("hyprland.start", function () 
     hl.exec_cmd(terminal)
-    hl.exec_cmd("nm-applet")
     hl.exec_cmd("wl-paste --type text --watch cliphist store")
     hl.exec_cmd("wl-paste --type image --watch cliphist store")
-    hl.exec_cmd("waybar")
-    hl.exec_cmd("hyprpaper")
-    hl.exec_cmd("dunst")
+    hl.exec_cmd("waybar & hyprpaper & swaync & udiskie &")
 end)
 
 
@@ -263,11 +260,12 @@ for i = 1, 10 do
     hl.bind(mainMod .. " + ALT + " .. key,     hl.dsp.window.move({ workspace = i }))
 end
 
--- Random Crap
+-- Important Crap
 hl.bind("PRINT", hl.dsp.exec_cmd([[bash -c 'grim -g "$(slurp)" - | wl-copy']]))
 hl.bind(mainMod .. " + CTRL + S", hl.dsp.exec_cmd("bash -c 'grim -g \"$(slurp)\" /home/aradhy/Pictures/Screenshots/$(date +%Y%m%d_%H%M%S).png'"))
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd([[bash -c 'cliphist list | rofi -dmenu -p "Clipboard" -config ~/.config/rofi/config.rasi | cliphist decode | wl-copy']]))
-hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("$HOME/.config/hypr/rofi-scripts/wifi-menu.sh"))
+hl.bind(mainMod .. " + I", hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/wifi-menu.sh"))
+hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("swaync-client -t -sw"))
 
 -- Example special workspace (scratchpad)
 hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special("magic"))
@@ -288,7 +286,7 @@ hl.bind("XF86AudioMute",        hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_S
 hl.bind("XF86AudioMicMute",     hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),   { locked = true, repeating = true })
 hl.bind("XF86MonBrightnessUp",  hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"),                  { locked = true, repeating = true })
 hl.bind("XF86MonBrightnessDown",hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"),                  { locked = true, repeating = true })
-hl.bind("XF86PowerOff",         hl.dsp.exec_cmd("$HOME/.config/hypr/rofi-scripts/power_menu.sh"))
+hl.bind("XF86PowerOff",         hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/power_menu.sh"))
 
 -- Requires playerctl
 hl.bind("XF86AudioNext",  hl.dsp.exec_cmd("playerctl next"),       { locked = true })

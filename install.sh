@@ -9,11 +9,11 @@ if [ "$EUID" -eq 0 ]; then
 fi
 
 # 1. Prerequisites (Silently install so gum works immediately)
-sudo pacman -Sy --needed --noconfirm gum uzip wget git base-devel > /dev/null 2>&1
+sudo pacman -Sy --needed --noconfirm gum uzip ttf-iosevka-nerd wget git base-devel > /dev/null 2>&1
 
 PACMAN_PKGS=(
     fish btop zoxide fzf fastfetch starship eza bat micro neovim ark
-    hyprland hyprpaper hyprlock cliphist grim slurp waybar rofi hyprpolkitagent
+    hyprland hyprpaper hyprlock swaync cliphist grim slurp waybar rofi hyprpolkitagent
     xdg-desktop-portal-hyprland xdg-desktop-portal-gtk qt5-wayland qt6-wayland
     pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber
     bluez bluez-utils blueman
@@ -87,6 +87,8 @@ gum style --foreground 220 "➔ Setting script permissions..."
 chmod +x ~/.config/random_conf_shit/sddmtheme.sh
 chmod +x ~/.config/random_conf_shit/usb_formatter.sh
 chmod +x ~/.local/daily-wall
+chmod +x ~/.config/hypr/scripts/wifi-menu.sh
+chmod +x ~/.config/hypr/scripts/power_menu.sh
 chmod +x ~/.config/wallust/templates/set_bg.sh
 wget -P ~/Pictures/ https://github.com/Aradhy-arch/aradhy-dotfiles/releases/download/Wallp/Wallpapers.zip && unzip ~/Pictures/Wallpapers.zip -d ~/Pictures/ && rm ~/Pictures/Wallpapers.zip
 
