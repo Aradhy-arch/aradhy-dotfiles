@@ -1,6 +1,5 @@
-[Unit]
-Description=Daily Wallpaper Rotation via Wallust
-
 [Service]
 Type=oneshot
+Environment="WAYLAND_DISPLAY=wayland-1"
+Environment="XDG_RUNTIME_DIR=/run/user/%U"
 ExecStart=%h/.local/daily-wall

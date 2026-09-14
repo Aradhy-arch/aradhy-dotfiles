@@ -30,6 +30,8 @@ hl.on("hyprland.start", function ()
     hl.exec_cmd(terminal)
     hl.exec_cmd("wl-paste --type text --watch cliphist store")
     hl.exec_cmd("wl-paste --type image --watch cliphist store")
+    hl.exec_cmd('gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"')
+    hl.exec_cmd('gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"')
     hl.exec_cmd("waybar & hyprpaper & swaync & udiskie &")
 end)
 
@@ -253,19 +255,25 @@ hl.bind(mainMod .. " + up",    hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + down",  hl.dsp.focus({ direction = "down" }))
 
 -- Switch workspaces with mainMod + [0-9]
--- Move active window to a workspace with mainMod + SHIFT + [0-9]
 for i = 1, 10 do
-    local key = i % 10 -- 10 maps to key 0
+    local key = i % 10
     hl.bind(mainMod .. " + " .. key,             hl.dsp.focus({ workspace = i}))
     hl.bind(mainMod .. " + ALT + " .. key,     hl.dsp.window.move({ workspace = i }))
+    hl.bind(mainMod .. " + home", hl.dsp.focus({ workspace = 1}))
+    hl.bind(mainMod .. " + end", hl.dsp.focus({ workspace = 10}))
+    hl.bind(mainMod .. " + ALT + home ",     hl.dsp.window.move({ workspace = 1 }))
+    hl.bind(mainMod .. " + ALT + end ",     hl.dsp.window.move({ workspace = 10 }))
 end
 
 -- Important Crap
 hl.bind("PRINT", hl.dsp.exec_cmd([[bash -c 'grim -g "$(slurp)" - | wl-copy']]))
 hl.bind(mainMod .. " + CTRL + S", hl.dsp.exec_cmd("bash -c 'grim -g \"$(slurp)\" /home/aradhy/Pictures/Screenshots/$(date +%Y%m%d_%H%M%S).png'"))
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd([[bash -c 'cliphist list | rofi -dmenu -p "Clipboard" -config ~/.config/rofi/config.rasi | cliphist decode | wl-copy']]))
-hl.bind(mainMod .. " + I", hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/wifi-menu.sh"))
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("swaync-client -t -sw"))
+
+-- Wifi Bluetooth etc
+hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("~/.config/hypr/scripts/rofi-bluetooth.sh"))
+hl.bind(mainMod .. " + I", hl.dsp.exec_cmd("~/.config/hypr/scripts/wifi-menu.sh"))
 
 -- Example special workspace (scratchpad)
 hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special("magic"))

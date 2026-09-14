@@ -46,6 +46,7 @@ if status is-interactive
 
     # Fun Stuff
     alias tre "cbonsai"
+    alias l "lavat"
     alias pi "pipes.sh"
     alias cm "cmatrix"
     

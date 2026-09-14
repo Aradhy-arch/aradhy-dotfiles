@@ -23,7 +23,7 @@
   },
 
   "clock": {
-    "format": "{:%a, %b %d  %I:%M %p}",
+    "format": "{:%a, %b %d⋮%I:%M %p}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
   },
 
@@ -39,19 +39,19 @@
   },
 
   "cpu": {
-    "format": " {usage}%",
+    "format": "  {usage}%",
     "interval": 2
   },
 
   "memory": {
-    "format": " {}%",
+    "format": "  {}%",
     "interval": 2
   },
 
   "network": {
-    "format-wifi": " {essid}",
-    "format-ethernet": "󰈀 Wired",
-    "format-disconnected": "󰤮 Disconnected",
+    "format-wifi": "  {essid}",
+    "format-ethernet": "󰈀  Wired",
+    "format-disconnected": "󰤮  Disconnected",
     "tooltip-format": "{ifname}: {ipaddr}"
   },
 
