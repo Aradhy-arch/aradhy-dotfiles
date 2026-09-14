@@ -12,7 +12,7 @@ fi
 sudo pacman -Sy --needed --noconfirm gum unzip ttf-iosevka-nerd wget git base-devel > /dev/null 2>&1
 
 PACMAN_PKGS=(
-    fish btop zoxide fzf fastfetch starship eza bat micro neovim ark
+    fish btop zoxide fzf fastfetch starship eza bat micro neovim ark lavat
     hyprland hyprpaper hyprlock swaync cliphist grim slurp waybar rofi hyprpolkitagent
     xdg-desktop-portal-hyprland xdg-desktop-portal-gtk qt5-wayland qt6-wayland
     pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber
