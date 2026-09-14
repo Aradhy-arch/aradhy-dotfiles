@@ -73,7 +73,7 @@ cd aradhy-dotfiles
 ### Manual Install:-
 * Before You Install it manually, you need the required packages, and the recommended packages, just run:
 ```bash
-sudo pacman -S --needed fish btop zoxide fzf fastfetch starship eza bat micro neovim ark hyprland hyprpaper hyprlock swaync cliphist grim slurp waybar rofi hyprpolkitagent xdg-desktop-portal-hyprland xdg-desktop-portal-gtk qt5-wayland qt6-wayland pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber bluez bluez-utils blueman alacritty discord spotify-launcher mousepad thunar sddm && yay -S --needed cbonsai pipes.sh cmatrix wallust
+sudo pacman -S --needed fish btop zoxide fzf fastfetch starship eza bat micro neovim ark lavat hyprland hyprpaper hyprlock swaync cliphist grim slurp waybar rofi hyprpolkitagent xdg-desktop-portal-hyprland xdg-desktop-portal-gtk qt5-wayland qt6-wayland pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber bluez bluez-utils blueman alacritty discord spotify-launcher mousepad thunar sddm
 ```
 This just Installs Audio, and Bluetooth dependencies along with needed apps. And them enable the services I aint gonna tell everything here so just search it up :p
 
