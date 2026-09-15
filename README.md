@@ -118,6 +118,7 @@ chmod +x ~/.config/random_conf_shit/usb_formatter.sh
 chmod +x ~/.local/daily-wall
 chmod +x ~/.config/hypr/scripts/wifi-menu.sh
 chmod +x ~/.config/hypr/scripts/power_menu.sh
+chmod +x ~/.config/hypr/scripts/reboot_menu.sh
 chmod +x ~/.config/wallust/templates/set_bg.sh
 ```
 6. **Get Wallpapers;**
