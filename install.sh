@@ -20,7 +20,7 @@ PACMAN_PKGS=(
     alacritty discord spotify-launcher mousepad thunar sddm
 )
 
-YAY_PKGS=(
+PARU_PKGS=(
     cbonsai pipes.sh cmatrix wallust
 )
 
@@ -38,16 +38,16 @@ if ! gum confirm "Ready to install packages and apply dotfiles?"; then
 fi
 
 # 3. Check and Install yay
-gum style --foreground 220 "➔ Checking for yay..."
+gum style --foreground 220 "➔ Checking for paru..."
 if command -v yay &> /dev/null; then
-    gum style --foreground 46 "  ✔️ yay is already installed! Skipping..."
+    gum style --foreground 46 "  ✔️ paru is already installed! Skipping..."
 else
-    gum style --foreground 214 "  📦 yay not found. Installing now..."
-    gum spin --spinner dot --title "Cloning yay repository..." -- git clone https://aur.archlinux.org/yay.git /tmp/yay
-    cd /tmp/yay
-    gum spin --spinner dot --title "Building yay..." -- makepkg -si --noconfirm
+    gum style --foreground 214 "  📦 paru not found. Installing now..."
+    gum spin --spinner dot --title "Cloning paru repository..." -- git clone https://aur.archlinux.org/paru.git /tmp/paru
+    cd /tmp/paru
+    gum spin --spinner dot --title "Building paru..." -- makepkg -si --noconfirm
     cd - > /dev/null
-    rm -rf /tmp/yay
+    rm -rf /tmp/paru
 fi
 
 # 4. Install Packages
@@ -55,7 +55,7 @@ gum style --foreground 220 "➔ Installing Official Pacman Packages..."
 gum spin --spinner line --title "Downloading and installing..." -- sudo pacman -S --needed --noconfirm "${PACMAN_PKGS[@]}"
 
 gum style --foreground 220 "➔ Installing AUR Packages..."
-gum spin --spinner line --title "Building from AUR..." -- yay -S --needed --noconfirm "${YAY_PKGS[@]}"
+gum spin --spinner line --title "Building from AUR..." -- paru -S --needed --noconfirm "${PARU_PKGS[@]}"
 
 # 5. Copying Configurations
 gum style --foreground 220 "➔ Applying configurations..."
@@ -91,6 +91,7 @@ chmod +x ~/.config/random_conf_shit/usb_formatter.sh
 chmod +x ~/.local/daily-wall
 chmod +x ~/.config/hypr/scripts/wifi-menu.sh
 chmod +x ~/.config/hypr/scripts/power_menu.sh
+chmod +x ~/.config/hypr/scripts/reboot_menu.sh
 chmod +x ~/.config/wallust/templates/set_bg.sh
 wget -P ~/Pictures/ https://github.com/Aradhy-arch/aradhy-dotfiles/releases/download/Wallp/Wallpapers.zip && unzip ~/Pictures/Wallpapers.zip -d ~/Pictures/ && rm ~/Pictures/Wallpapers.zip
 
