@@ -8,8 +8,12 @@ if [ "$EUID" -eq 0 ]; then
   exit 1
 fi
 
-# 1. Prerequisites (Silently install so gum works immediately)
-sudo pacman -Sy --needed --noconfirm gum unzip ttf-iosevka-nerd wget git base-devel > /dev/null 2>&1
+# 0. Prerequisites (Silently install so gum works immediately)
+sudo pacman -Sy --needed --noconfirm gum git unzip ttf-iosevka-nerd wget git base-devel > /dev/null 2>&1
+
+# 1. Clone The Repo
+git clone --depth=1 https://github.com/Aradhy-arch/aradhy-dotfiles
+cd aradhy-dotfiles
 
 PACMAN_PKGS=(
     fish btop zoxide fzf fastfetch starship eza bat micro neovim ark
