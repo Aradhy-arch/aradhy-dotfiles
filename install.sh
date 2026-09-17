@@ -17,9 +17,9 @@ gum spin --spinner dot --title "Cloning Repo..." -- git clone --depth=1 https://
 cd aradhy-dotfiles
 
 PACMAN_PKGS=(
-    fish btop zoxide fzf fastfetch starship eza bat micro neovim ark
+    fish btop zoxide fzf fastfetch starship eza bat micro neovim ark qt6-svg qt6-virtualkeyboard qt6-multimedia-ffmpeg
     hyprland hyprpaper hyprlock swaync cliphist grim slurp waybar rofi hyprpolkitagent
-    xdg-desktop-portal-hyprland xdg-desktop-portal-gtk qt5-wayland qt6-wayland
+    xdg-desktop-portal-hyprland xdg-desktop-portal-gtk qt5-wayland qt6-wayland noto-fonts-cjk noto-fonts-emoji
     pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber
     bluez bluez-utils blueman
     alacritty discord spotify-launcher mousepad thunar sddm
