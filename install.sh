@@ -58,7 +58,7 @@ gum style --foreground 220 "➔ Installing Official Pacman Packages..."
 gum spin --spinner line --title "Downloading and installing..." -- sudo pacman -S --needed --noconfirm "${PACMAN_PKGS[@]}"
 
 gum style --foreground 220 "➔ Installing AUR Packages..."
-gum spin --spinner line --title "Building from AUR..." -- paru -S --needed --noconfirm "${AUR_PKGS[@]}"
+gum spin --spinner line --title "Building from AUR..." -- $AUR_HELPER -S --needed --noconfirm "${AUR_PKGS[@]}"
 
 # 5. Copying Configurations
 gum style --foreground 220 "➔ Applying configurations..."
@@ -76,9 +76,10 @@ cp -r wallust ~/.config
 cp -r waybar ~/.config
 cp -r rofi ~/.config
 cp -r gtk-3.0 ~/.config
-mv -r ~/.config/random_conf_shit/rofi ~/.local/share
+mv ~/.config/random_conf_shit/rofi ~/.local/share
 
 # Standard files
+cp daily-wall ~/.local
 cp starship.catppuccin.toml ~/.config
 cp starship.toml ~/.config
 
