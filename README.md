@@ -139,6 +139,8 @@ rm ~/Pictures/Wallpapers.zip
 ## 🎨 Credits & Acknowledgments
 
 * ⭐ Credit to **[Keyitdev](https://github.com/Keyitdev)** for creating the awesome [sddm-astronaut-theme](https://github.com/Keyitdev/sddm-astronaut-theme).
+* ⭐ Credit to **[nickclyde](https://github.com/nickclyde/)** for creating the [Bluetooth Menu](https://github.com/nickclyde/rofi-bluetooth) I user here.
+* ⭐ Credit to **[newmanls](https://github.com/newmanls/)**, as I am using their [Rofi Theme](https://github.com/newmanls/rofi-themes-collection).
 * I did not create the wallpapers, assets, or third-party artwork included in this repository. If you are the original artist or creator of any work featured here, please reach out by opening an issue or contacting me—I will gladly add proper credits and links to your work!
 
 ---
