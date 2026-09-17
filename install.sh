@@ -70,7 +70,8 @@ else
     else
         gum spin --spinner dot --title "Cloning $AUR_HELPER repository..." -- git clone "https://aur.archlinux.org/$AUR_HELPER.git" "/tmp/$AUR_HELPER"
         cd "/tmp/$AUR_HELPER"
-        gum spin --spinner dot --title "Building $AUR_HELPER..." -- makepkg -si --noconfirm
+        echo "Building $AUR_HELPER..."
+        makepkg -si --noconfirm
         cd - > /dev/null
         rm -rf "/tmp/$AUR_HELPER"
     fi
@@ -81,14 +82,16 @@ gum style --foreground 220 "➔ Installing Official Pacman Packages..."
 if [ "$INTERACTIVE" = "Yes" ]; then
     gum confirm "Run pacman installation?" && sudo pacman -S --needed --noconfirm "${PACMAN_PKGS[@]}"
 else
-    gum spin --spinner line --title "Downloading and installing pacman packages..." -- sudo pacman -S --needed --noconfirm "${PACMAN_PKGS[@]}" > /dev/null 2>&1
+    echo "Downloading and installing pacman packages..."
+sudo pacman -S --needed --noconfirm "${PACMAN_PKGS[@]}"
 fi
 
 gum style --foreground 220 "➔ Installing AUR Packages..."
 if [ "$INTERACTIVE" = "Yes" ]; then
     gum confirm "Run $AUR_HELPER installation?" && "$AUR_HELPER" -S --needed --noconfirm "${AUR_PKGS[@]}"
 else
-    gum spin --spinner line --title "Building from AUR..." -- "$AUR_HELPER" -S --needed --noconfirm "${AUR_PKGS[@]}" > /dev/null 2>&1
+    echo "Building from AUR..."
+    "$AUR_HELPER" -S --needed --noconfirm "${AUR_PKGS[@]}"
 fi
 
 # 6. Copying Configurations
