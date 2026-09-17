@@ -50,12 +50,10 @@ The main focus here is how **Wallust** ties the whole desktop together:
 
 ### Automatic Install:-
 
-Just clone and run the script:
+Just run:
 
 ```bash
-git clone --depth=1 https://github.com/Aradhy-arch/aradhy-dotfiles
-cd aradhy-dotfiles
-./install.sh
+curl -sL https://raw.githubusercontent.com/Aradhy-arch/aradhy-dotfiles/main/install.sh | bash
 ```
 
 ---
