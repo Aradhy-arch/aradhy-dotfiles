@@ -37,76 +37,106 @@ if ! gum confirm "Ready to install packages and apply dotfiles?"; then
     exit 0
 fi
 
-# 3. Choose and Install AUR Helper
+# 3. Interactive Mode Setup
+gum style --foreground 220 "➔ See all command outputs and confirm before executing?"
+INTERACTIVE=$(gum choose "Yes" "No")
+
+run_cmd() {
+    local cmd="$*"
+    if [ "$INTERACTIVE" = "Yes" ]; then
+        gum confirm "Execute: $cmd?" || return 0
+        eval "$cmd"
+    else
+        eval "$cmd" > /dev/null 2>&1
+    fi
+}
+
+# 4. Choose and Install AUR Helper
 gum style --foreground 220 "➔ Choose your AUR helper:"
 AUR_HELPER=$(gum choose "yay" "paru")
 
 gum style --foreground 220 "➔ Checking for $AUR_HELPER..."
-if command -v $AUR_HELPER &> /dev/null; then
+if command -v "$AUR_HELPER" &> /dev/null; then
     gum style --foreground 46 "  ✔️ $AUR_HELPER is already installed! Skipping..."
 else
     gum style --foreground 214 "  📦 $AUR_HELPER not found. Installing now..."
-    gum spin --spinner dot --title "Cloning $AUR_HELPER repository..." -- git clone "https://aur.archlinux.org/$AUR_HELPER.git" "/tmp/$AUR_HELPER"
-    cd "/tmp/$AUR_HELPER"
-    gum spin --spinner dot --title "Building $AUR_HELPER..." -- makepkg -si --noconfirm
-    cd - > /dev/null
-    rm -rf "/tmp/$AUR_HELPER"
+    if [ "$INTERACTIVE" = "Yes" ]; then
+        gum confirm "Clone and build $AUR_HELPER?" || exit 1
+        git clone "https://aur.archlinux.org/$AUR_HELPER.git" "/tmp/$AUR_HELPER"
+        cd "/tmp/$AUR_HELPER"
+        makepkg -si --noconfirm
+        cd - > /dev/null
+        rm -rf "/tmp/$AUR_HELPER"
+    else
+        gum spin --spinner dot --title "Cloning $AUR_HELPER repository..." -- git clone "https://aur.archlinux.org/$AUR_HELPER.git" "/tmp/$AUR_HELPER"
+        cd "/tmp/$AUR_HELPER"
+        gum spin --spinner dot --title "Building $AUR_HELPER..." -- makepkg -si --noconfirm
+        cd - > /dev/null
+        rm -rf "/tmp/$AUR_HELPER"
+    fi
 fi
 
-# 4. Install Packages
+# 5. Install Packages
 gum style --foreground 220 "➔ Installing Official Pacman Packages..."
-gum spin --spinner line --title "Downloading and installing..." -- sudo pacman -S --needed --noconfirm "${PACMAN_PKGS[@]}"
+if [ "$INTERACTIVE" = "Yes" ]; then
+    gum confirm "Run pacman installation?" && sudo pacman -S --needed --noconfirm "${PACMAN_PKGS[@]}"
+else
+    gum spin --spinner line --title "Downloading and installing pacman packages..." -- sudo pacman -S --needed --noconfirm "${PACMAN_PKGS[@]}" > /dev/null 2>&1
+fi
 
 gum style --foreground 220 "➔ Installing AUR Packages..."
-gum spin --spinner line --title "Building from AUR..." -- $AUR_HELPER -S --needed --noconfirm "${AUR_PKGS[@]}"
+if [ "$INTERACTIVE" = "Yes" ]; then
+    gum confirm "Run $AUR_HELPER installation?" && "$AUR_HELPER" -S --needed --noconfirm "${AUR_PKGS[@]}"
+else
+    gum spin --spinner line --title "Building from AUR..." -- "$AUR_HELPER" -S --needed --noconfirm "${AUR_PKGS[@]}" > /dev/null 2>&1
+fi
 
-# 5. Copying Configurations
+# 6. Copying Configurations
 gum style --foreground 220 "➔ Applying configurations..."
-mkdir -p ~/.config
-mkdir -p ~/.local
+COPY_CMD="mkdir -p ~/.config ~/.local ~/.local/share && \
+cp -r swaync alacritty fastfetch fish hypr random_conf_shit systemd wallust waybar rofi gtk-3.0 ~/.config && \
+cp daily-wall ~/.local && \
+mv ~/.config/random_conf_shit/rofi ~/.local/share && \
+cp starship.catppuccin.toml starship.toml ~/.config"
 
-cp -r swaync ~/.config
-cp -r alacritty ~/.config
-cp -r fastfetch ~/.config
-cp -r fish ~/.config
-cp -r hypr ~/.config
-cp -r random_conf_shit ~/.config
-cp -r systemd ~/.config
-cp -r wallust ~/.config
-cp -r waybar ~/.config
-cp -r rofi ~/.config
-cp -r gtk-3.0 ~/.config
-mv ~/.config/random_conf_shit/rofi ~/.local/share
+run_cmd "$COPY_CMD"
 
-# Standard files
-cp daily-wall ~/.local
-cp starship.catppuccin.toml ~/.config
-cp starship.toml ~/.config
-
-# 6. SDDM Theme Application
+# 7. SDDM Theme Application
 gum style --foreground 220 "➔ Setting up SDDM Theme..."
-sudo cp -r sddm-astronaut-theme /usr/share/sddm/themes/
-sudo mkdir -p /etc/sddm.conf.d
-echo -e "[Theme]\nCurrent=sddm-astronaut-theme" | sudo tee /etc/sddm.conf.d/theme.conf > /dev/null
+SDDM_CMD="sudo cp -r sddm-astronaut-theme /usr/share/sddm/themes/ && \
+sudo mkdir -p /etc/sddm.conf.d && \
+echo -e '[Theme]\nCurrent=sddm-astronaut-theme' | sudo tee /etc/sddm.conf.d/theme.conf"
 
-# 7. Setting Executable Permissions
+run_cmd "$SDDM_CMD"
+
+# 8. Setting Executable Permissions & Downloading Wallpapers
 gum style --foreground 220 "➔ Setting script permissions..."
-chmod +x ~/.config/random_conf_shit/sddmtheme.sh
-chmod +x ~/.config/random_conf_shit/usb_formatter.sh
-chmod +x ~/.local/daily-wall
-chmod +x ~/.config/hypr/scripts/wifi-menu.sh
-chmod +x ~/.config/hypr/scripts/power_menu.sh
-chmod +x ~/.config/hypr/scripts/reboot_menu.sh
-chmod +x ~/.config/wallust/templates/set_bg.sh
-chmod +x ~/.config/hypr/scripts/rofi-bluetooth.sh
-chmod +x ~/.config/hypr/scripts/screen-record.sh
-wget -P ~/Pictures/ https://github.com/Aradhy-arch/aradhy-dotfiles/releases/download/Wallp/Wallpapers.zip && unzip ~/Pictures/Wallpapers.zip -d ~/Pictures/ && rm ~/Pictures/Wallpapers.zip
+PERM_CMD="chmod +x ~/.config/random_conf_shit/sddmtheme.sh \
+~/.config/random_conf_shit/usb_formatter.sh \
+~/.local/daily-wall \
+~/.config/hypr/scripts/wifi-menu.sh \
+~/.config/hypr/scripts/power_menu.sh \
+~/.config/hypr/scripts/reboot_menu.sh \
+~/.config/wallust/templates/set_bg.sh \
+~/.config/hypr/scripts/rofi-bluetooth.sh \
+~/.config/hypr/scripts/screen-record.sh"
 
-# 8. Enabling Services
+run_cmd "$PERM_CMD"
+
+gum style --foreground 220 "➔ Downloading Wallpapers..."
+WALL_CMD="wget -P ~/Pictures/ https://github.com/Aradhy-arch/aradhy-dotfiles/releases/download/Wallp/Wallpapers.zip && \
+unzip -o ~/Pictures/Wallpapers.zip -d ~/Pictures/ && \
+rm ~/Pictures/Wallpapers.zip"
+
+run_cmd "$WALL_CMD"
+
+# 9. Enabling Services
 gum style --foreground 220 "➔ Enabling Services (SDDM, Bluetooth, & Daily Wallpaper)..."
-sudo systemctl enable sddm.service > /dev/null 2>&1 || true
-sudo systemctl enable bluetooth.service > /dev/null 2>&1 || true
-systemctl --user enable --now daily-wall.timer > /dev/null 2>&1 || true
+SVC_CMD="sudo systemctl enable sddm.service || true; \
+sudo systemctl enable bluetooth.service || true; \
+systemctl --user enable --now daily-wall.timer || true"
+
+run_cmd "$SVC_CMD"
 
 gum style \
 	--foreground 220 --border-foreground 220 --border rounded \
