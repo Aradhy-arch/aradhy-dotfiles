@@ -12,7 +12,8 @@ fi
 sudo pacman -Sy --needed --noconfirm gum git unzip ttf-iosevka-nerd wget git base-devel > /dev/null 2>&1
 
 # 1. Clone The Repo
-git clone --depth=1 https://github.com/Aradhy-arch/aradhy-dotfiles
+rm -rf ~/aradhy-dotfiles
+gum spin --spinner dot --title "Cloning Repo..." -- git clone --depth=1 https://github.com/Aradhy-arch/aradhy-dotfiles
 cd aradhy-dotfiles
 
 PACMAN_PKGS=(
