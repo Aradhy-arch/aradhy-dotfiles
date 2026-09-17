@@ -30,8 +30,6 @@ hl.on("hyprland.start", function ()
     hl.exec_cmd(terminal)
     hl.exec_cmd("wl-paste --type text --watch cliphist store")
     hl.exec_cmd("wl-paste --type image --watch cliphist store")
-    hl.exec_cmd('gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"')
-    hl.exec_cmd('gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"')
     hl.exec_cmd("waybar & hyprpaper & swaync & udiskie &")
 end)
 
@@ -55,7 +53,8 @@ hl.env("HYPRCURSOR_SIZE", "24")
      enforce_permissions = true,
    },
  })
-
+ 
+ hl.permission("/usr/(bin|local/bin)/wf-recorder", "screencopy", "allow")
  hl.permission("/usr/(bin|local/bin)/grim", "screencopy", "allow")
  hl.permission("/usr/(lib|libexec|lib64)/xdg-desktop-portal-hyprland", "screencopy", "allow")
  hl.permission("/usr/(bin|local/bin)/hyprpm", "plugin", "allow")
@@ -65,7 +64,6 @@ hl.env("HYPRCURSOR_SIZE", "24")
 ---- LOOK AND FEEL ----
 -----------------------
 
--- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
 hl.config({
     general = {
         gaps_in  = 5,
@@ -74,14 +72,12 @@ hl.config({
         border_size = 2,
 
         col = {
-            active_border   = { colors = {"rgba(33ccffee)", "rgba(00ff99ee)"}, angle = 45 },
+            active_border = { colors = {"rgba(183, 148, 227, 1)", "rgba(01, 83, 123, 1)"}, angle = 45 },
             inactive_border = "rgba(595959aa)",
         },
-
-        -- Set to true to enable resizing windows by clicking and dragging on borders and gaps
+        
         resize_on_border = false,
 
-        -- Please see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Tearing/ before you turn this on
         allow_tearing = false,
 
         layout = "dwindle",
@@ -143,25 +139,6 @@ hl.animation({ leaf = "workspacesIn",  enabled = true,  speed = 1.21, bezier = "
 hl.animation({ leaf = "workspacesOut", enabled = true,  speed = 1.94, bezier = "almostLinear", style = "fade" })
 hl.animation({ leaf = "zoomFactor",    enabled = true,  speed = 7,    bezier = "quick" })
 
--- Ref https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
--- "Smart gaps" / "No gaps when only"
--- uncomment all if you wish to use that.
--- hl.workspace_rule({ workspace = "w[tv1]", gaps_out = 0, gaps_in = 0 })
--- hl.workspace_rule({ workspace = "f[1]",   gaps_out = 0, gaps_in = 0 })
--- hl.window_rule({
---     name  = "no-gaps-wtv1",
---     match = { float = false, workspace = "w[tv1]" },
---     border_size = 0,
---     rounding    = 0,
--- })
--- hl.window_rule({
---     name  = "no-gaps-f1",
---     match = { float = false, workspace = "f[1]" },
---     border_size = 0,
---     rounding    = 0,
--- })
-
--- See https://wiki.hypr.land/Configuring/Layouts/Dwindle-Layout/ for more
 hl.config({
     dwindle = {
         preserve_split = true, -- You probably want this
@@ -222,8 +199,6 @@ hl.gesture({
     action = "workspace"
 })
 
--- Example per-device config
--- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Devices/ for more
 hl.device({
     name        = "epic-mouse-v1",
     sensitivity = -0.5,
@@ -242,10 +217,12 @@ local closeWindowBind = hl.bind(mainMod .. " + R", hl.dsp.window.close())
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("spotify-launcher"))
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
+hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + F", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + A", hl.dsp.exec_cmd(menu))
-hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
+hl.bind(mainMod .. " + SUPER_L", hl.dsp.exec_cmd(menu),                                                                                              { release = true })   
+hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("swaync-client -t -sw"))
+hl.bind(mainMod .. " + U", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))
 
 -- Move focus with mainMod + arrow keys
@@ -266,14 +243,20 @@ for i = 1, 10 do
 end
 
 -- Important Crap
-hl.bind("PRINT", hl.dsp.exec_cmd([[bash -c 'grim -g "$(slurp)" - | wl-copy']]))
-hl.bind(mainMod .. " + CTRL + S", hl.dsp.exec_cmd("bash -c 'grim -g \"$(slurp)\" /home/aradhy/Pictures/Screenshots/$(date +%Y%m%d_%H%M%S).png'"))
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd([[bash -c 'cliphist list | rofi -dmenu -p "Clipboard" -config ~/.config/rofi/config.rasi | cliphist decode | wl-copy']]))
-hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("swaync-client -t -sw"))
+
+-- Screenshot & Screen Recording
+hl.bind("PRINT", hl.dsp.exec_cmd([[bash -c 'grim -g "$(slurp)" - | wl-copy']]))
+hl.bind(mainMod .. " + CTRL + S", hl.dsp.exec_cmd("bash -c 'grim -g \"$(slurp)\" ~/Pictures/Screenshots/$(date +%Y%m%d_%H%M%S).png'"))
+hl.bind(mainMod .. " + G", hl.dsp.exec_cmd("~/.config/hypr/scripts/screen-record.sh"))
 
 -- Wifi Bluetooth etc
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("~/.config/hypr/scripts/rofi-bluetooth.sh"))
 hl.bind(mainMod .. " + I", hl.dsp.exec_cmd("~/.config/hypr/scripts/wifi-menu.sh"))
+
+-- Shutdown & Reboot
+hl.bind("XF86PowerOff",               hl.dsp.exec_cmd("~/.config/hypr/scripts/power_menu.sh"))
+hl.bind(mainMod .. " + XF86PowerOff", hl.dsp.exec_cmd("~/.config/hypr/scripts/reboot_menu.sh"))
 
 -- Example special workspace (scratchpad)
 hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special("magic"))
@@ -294,7 +277,6 @@ hl.bind("XF86AudioMute",        hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_S
 hl.bind("XF86AudioMicMute",     hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),   { locked = true, repeating = true })
 hl.bind("XF86MonBrightnessUp",  hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"),                  { locked = true, repeating = true })
 hl.bind("XF86MonBrightnessDown",hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"),                  { locked = true, repeating = true })
-hl.bind("XF86PowerOff",         hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/power_menu.sh"))
 
 -- Requires playerctl
 hl.bind("XF86AudioNext",  hl.dsp.exec_cmd("playerctl next"),       { locked = true })
@@ -330,19 +312,30 @@ hl.window_rule({
     no_focus = true,
 })
 
--- Layer rules also return a handle.
--- local overlayLayerRule = hl.layer_rule({
---     name  = "no-anim-overlay",
---     match = { namespace = "^my-overlay$" },
---     no_anim = true,
--- })
--- overlayLayerRule:set_enabled(false)
+hl.window_rule({
+  match = { class = "^(rofi)$" },
+  stay_focused = true
+})
 
--- Hyprland-run windowrule
 hl.window_rule({
     name  = "move-hyprland-run",
     match = { class = "hyprland-run" },
 
     move  = "20 monitor_h-120",
     float = true,
+})
+
+-- Swaync Blur
+hl.layer_rule({
+    name = "blur-swaync-cc",
+    match = { namespace = "swaync-control-center" },
+    blur = true,
+    ignore_alpha = 0.5
+})
+
+hl.layer_rule({
+    name = "blur-swaync-notif",
+    match = { namespace = "swaync-notification-window" },
+    blur = true,
+    ignore_alpha = 0.5
 })
