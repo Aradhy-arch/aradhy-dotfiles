@@ -55,7 +55,12 @@ Just run:
 ```bash
 bash -c "$(curl -sL https://raw.githubusercontent.com/Aradhy-arch/aradhy-dotfiles/main/install.sh)"
 ```
-
+OR if you want, you can just run:
+```bash
+git clone --depth=1 https://github.com/Aradhy-arch/aradhy-dotfiles
+cd aradhy-dotfiles && chmod +x ~/aradhy-dotfiles/install.sh
+./install.sh
+```
 ---
 
 ### 💬 Telling you random shit before you go manual...
