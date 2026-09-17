@@ -12,7 +12,7 @@ fi
 sudo pacman -Sy --needed --noconfirm gum unzip ttf-iosevka-nerd wget git base-devel > /dev/null 2>&1
 
 PACMAN_PKGS=(
-    fish btop zoxide fzf fastfetch starship eza bat micro neovim ark lavat
+    fish btop zoxide fzf fastfetch starship eza bat micro neovim ark
     hyprland hyprpaper hyprlock swaync cliphist grim slurp waybar rofi hyprpolkitagent
     xdg-desktop-portal-hyprland xdg-desktop-portal-gtk qt5-wayland qt6-wayland
     pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber
@@ -20,8 +20,8 @@ PACMAN_PKGS=(
     alacritty discord spotify-launcher mousepad thunar sddm
 )
 
-PARU_PKGS=(
-    cbonsai pipes.sh cmatrix wallust
+AUR_PKGS=(
+    cbonsai pipes.sh cmatrix wallust lavat
 )
 
 clear
@@ -37,17 +37,20 @@ if ! gum confirm "Ready to install packages and apply dotfiles?"; then
     exit 0
 fi
 
-# 3. Check and Install yay
-gum style --foreground 220 "➔ Checking for paru..."
-if command -v yay &> /dev/null; then
-    gum style --foreground 46 "  ✔️ paru is already installed! Skipping..."
+# 3. Choose and Install AUR Helper
+gum style --foreground 220 "➔ Choose your AUR helper:"
+AUR_HELPER=$(gum choose "yay" "paru")
+
+gum style --foreground 220 "➔ Checking for $AUR_HELPER..."
+if command -v $AUR_HELPER &> /dev/null; then
+    gum style --foreground 46 "  ✔️ $AUR_HELPER is already installed! Skipping..."
 else
-    gum style --foreground 214 "  📦 paru not found. Installing now..."
-    gum spin --spinner dot --title "Cloning paru repository..." -- git clone https://aur.archlinux.org/paru.git /tmp/paru
-    cd /tmp/paru
-    gum spin --spinner dot --title "Building paru..." -- makepkg -si --noconfirm
+    gum style --foreground 214 "  📦 $AUR_HELPER not found. Installing now..."
+    gum spin --spinner dot --title "Cloning $AUR_HELPER repository..." -- git clone "https://aur.archlinux.org/$AUR_HELPER.git" "/tmp/$AUR_HELPER"
+    cd "/tmp/$AUR_HELPER"
+    gum spin --spinner dot --title "Building $AUR_HELPER..." -- makepkg -si --noconfirm
     cd - > /dev/null
-    rm -rf /tmp/paru
+    rm -rf "/tmp/$AUR_HELPER"
 fi
 
 # 4. Install Packages
@@ -55,13 +58,14 @@ gum style --foreground 220 "➔ Installing Official Pacman Packages..."
 gum spin --spinner line --title "Downloading and installing..." -- sudo pacman -S --needed --noconfirm "${PACMAN_PKGS[@]}"
 
 gum style --foreground 220 "➔ Installing AUR Packages..."
-gum spin --spinner line --title "Building from AUR..." -- paru -S --needed --noconfirm "${PARU_PKGS[@]}"
+gum spin --spinner line --title "Building from AUR..." -- paru -S --needed --noconfirm "${AUR_PKGS[@]}"
 
 # 5. Copying Configurations
 gum style --foreground 220 "➔ Applying configurations..."
 mkdir -p ~/.config
 mkdir -p ~/.local
 
+cp -r swaync ~/.config
 cp -r alacritty ~/.config
 cp -r fastfetch ~/.config
 cp -r fish ~/.config
@@ -70,8 +74,8 @@ cp -r random_conf_shit ~/.config
 cp -r systemd ~/.config
 cp -r wallust ~/.config
 cp -r waybar ~/.config
-cp daily-wall ~/.local
 cp -r rofi ~/.config
+cp -r gtk-3.0 ~/.config
 mv -r ~/.config/random_conf_shit/rofi ~/.local/share
 
 # Standard files
@@ -93,6 +97,8 @@ chmod +x ~/.config/hypr/scripts/wifi-menu.sh
 chmod +x ~/.config/hypr/scripts/power_menu.sh
 chmod +x ~/.config/hypr/scripts/reboot_menu.sh
 chmod +x ~/.config/wallust/templates/set_bg.sh
+chmod +x ~/.config/hypr/scripts/rofi-bluetooth.sh
+chmod +x ~/.config/hypr/scripts/screen-record.sh
 wget -P ~/Pictures/ https://github.com/Aradhy-arch/aradhy-dotfiles/releases/download/Wallp/Wallpapers.zip && unzip ~/Pictures/Wallpapers.zip -d ~/Pictures/ && rm ~/Pictures/Wallpapers.zip
 
 # 8. Enabling Services
