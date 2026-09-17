@@ -1,6 +1,6 @@
 # ╔══════════════════════════════════════════════════════════════════════════════╗
-# ║                         ARADHY'S ARCH RICE                                  ║
-# ║                   Custom Fish Configuration                                 ║
+# ║                         ARADHY'S ARCH RICE                                   ║
+# ║                   Custom Fish Configuration                                  ║
 # ╚══════════════════════════════════════════════════════════════════════════════╝
 
 
@@ -30,9 +30,12 @@ if status is-interactive
     # Quick Config & Management
     alias sourcefish "source ~/.config/fish/config.fish"
     alias openfish "nano ~/.config/fish/config.fish"
+    abbr -a pa "sudo pacman -S"
+    abbr -a ya "yay -S"
     alias ff "fastfetch"
 
     # Modern CLI Replacements
+    abbr -a gc "git clone --depth=1"
     alias ls "eza --icons=always --group-directories-first"
     alias ll "eza -lah --icons=always --group-directories-first"
     alias tree "eza --tree --icons=always"
@@ -56,5 +59,3 @@ if status is-interactive
     # You can add your custom functions here :D
 
 end
-
-fish_add_path /home/aradhy/.spicetify
