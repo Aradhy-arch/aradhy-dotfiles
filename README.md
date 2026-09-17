@@ -71,8 +71,7 @@ bash -c "$(curl -sL https://raw.githubusercontent.com/Aradhy-arch/aradhy-dotfile
 ### Manual Install:-
 * Before You Install it manually, you need the required packages, and the recommended packages (assuming you use yay), just run:
 ```bash
-sudo pacman -S --needed fish btop zoxide fzf fastfetch starship eza bat micro neovim ark lavat hyprland hyprpaper hyprlock swaync cliphist grim slurp waybar rofi hyprpolkitagent xdg-desktop-portal-hyprland xdg-desktop-portal-gtk qt5-wayland qt6-wayland pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber bluez bluez-utils blueman alacritty discord spotify-launcher mousepad thunar sddm &&
-yay -S --needed --noconfirm wallust lavat cbonsai pipes.sh cmatrix
+sudo pacman -S --needed fish btop zoxide fzf fastfetch starship eza bat micro neovim ark lavat hyprland hyprpaper hyprlock swaync cliphist grim slurp waybar rofi hyprpolkitagent xdg-desktop-portal-hyprland xdg-desktop-portal-gtk qt5-wayland qt6-wayland pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber bluez bluez-utils blueman alacritty discord spotify-launcher mousepad thunar sddm && yay -S --needed --noconfirm wallust lavat cbonsai pipes.sh cmatrix
 ```
 This just Installs Audio, and Bluetooth dependencies along with needed apps. And them enable the services I aint gonna tell everything here so just search it up :p
 
