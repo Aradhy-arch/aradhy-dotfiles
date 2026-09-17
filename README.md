@@ -85,6 +85,7 @@ cd aradhy-dotfiles
 
 2. **Copy configuration folders into `~/.config` and `~/.local`:**
 ```bash
+cp -r swaync ~/.config
 cp -r alacritty ~/.config
 cp -r fastfetch ~/.config
 cp -r fish ~/.config
@@ -94,6 +95,7 @@ cp -r systemd ~/.config
 cp -r wallust ~/.config
 cp -r waybar ~/.config
 cp -r rofi ~/.config
+cp -r gtk-3.0 ~/.config
 mv -r ~/.config/random_conf_shit/rofi ~/.local/share
 ```
 
@@ -120,6 +122,8 @@ chmod +x ~/.config/hypr/scripts/wifi-menu.sh
 chmod +x ~/.config/hypr/scripts/power_menu.sh
 chmod +x ~/.config/hypr/scripts/reboot_menu.sh
 chmod +x ~/.config/wallust/templates/set_bg.sh
+chmod +x ~/.config/hypr/scripts/rofi-bluetooth.sh
+chmod +x ~/.config/hypr/scripts/screen-record.sh
 ```
 6. **Get Wallpapers;**
 ```bash
