@@ -489,9 +489,10 @@ gum style \
     "Your system is ready for rebooting."
 
 echo ""
+clear
 info_msg "Recommended next steps:"
 echo "  1. Review ~/.config/hypr/hyprland.conf for keyboard bindings"
-echo "  2. Reboot your system: reboot"
+echo "  2. Reboot your system"
 echo "  3. Login and enjoy your new setup!"
 echo ""
 gum style --foreground 46 "✨ Thank you for using Aradhy's dotfiles! ✨"
