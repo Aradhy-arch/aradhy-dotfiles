@@ -9,8 +9,8 @@ if [ "$EUID" -eq 0 ]; then
 fi
 
 # 0. Prerequisites (Silently install so gum works immediately)
-sudo pacman -Sy --needed --noconfirm gum git unzip ttf-iosevka-nerd wget git base-devel > /dev/null 2>&1
-clear
+sudo pacman -Sy --needed --noconfirm gum git unzip ttf-iosevka-nerd wget git base-devel > /dev/null 2>&1 && clear
+
 
 # 0.5 Backup
 if gum confirm "Do you want to take backups of your config and local folders?"; then
