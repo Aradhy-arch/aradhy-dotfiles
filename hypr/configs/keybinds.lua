@@ -42,17 +42,10 @@ hl.bind(mainMod .. " + G", hl.dsp.exec_cmd("~/.config/hypr/scripts/screen-record
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("~/.config/hypr/scripts/rofi-bluetooth.sh"))
 hl.bind(mainMod .. " + I", hl.dsp.exec_cmd("~/.config/hypr/scripts/wifi-menu.sh"))
 
--- Shutdown & Reboot
+-- Power
 hl.bind("XF86PowerOff",               hl.dsp.exec_cmd("~/.config/hypr/scripts/power_menu.sh"))
 hl.bind(mainMod .. " + XF86PowerOff", hl.dsp.exec_cmd("~/.config/hypr/scripts/reboot_menu.sh"))
-
--- Example special workspace (scratchpad)
-hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special("magic"))
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
-
--- Scroll through existing workspaces with mainMod + scroll
-hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
-hl.bind(mainMod .. " + mouse_up",   hl.dsp.focus({ workspace = "e-1" }))
+hl.bind("switch:on:Lid Switch", hl.dsp.exec_cmd("hyprlock"))
 
 -- Move/resize windows with mainMod + LMB/RMB and dragging
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
@@ -82,3 +75,11 @@ for i = 1, 10 do
     hl.bind(mainMod .. " + ALT + home ",     hl.dsp.window.move({ workspace = 1 }))
     hl.bind(mainMod .. " + ALT + end ",     hl.dsp.window.move({ workspace = 10 }))
 end
+
+-- Special workspace
+hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special("magic"))
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
+
+-- Scroll through existing workspaces with mainMod + scroll
+hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
+hl.bind(mainMod .. " + mouse_up",   hl.dsp.focus({ workspace = "e-1" }))
