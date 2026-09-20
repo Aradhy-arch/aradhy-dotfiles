@@ -53,7 +53,7 @@ The main focus here is how **Wallust** ties the whole desktop together:
 Just run:
 
 ```bash
-bash -c "$(curl -sL [https://raw.githubusercontent.com/Aradhy-arch/aradhy-dotfiles/main/install.sh](https://raw.githubusercontent.com/Aradhy-arch/aradhy-dotfiles/main/install.sh))"
+bash -c "$(curl -sL https://raw.githubusercontent.com/Aradhy-arch/aradhy-dotfiles/main/install.sh)"
 ```
 OR if you want, you can just run:
 ```bash
