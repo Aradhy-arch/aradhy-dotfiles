@@ -181,7 +181,7 @@ rm ~/Pictures/Wallpapers.zip
 | `SUPER + I` | Wi-Fi Menu |
 | `SUPER + L` | Lock Screen |
 | `Power Button` | Power Menu |
-| `SUPER + Power Button / Reboot Button` | Reboot Menu |
+| `SUPER + Power Button` | Reboot Menu |
 | `Media Keys` | Adjust Volume, Mute, Brightness, Play/Pause/Next/Prev |
 
 ---
