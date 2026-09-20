@@ -100,6 +100,7 @@ cp -r waybar ~/.config
 cp -r rofi ~/.config
 cp -r gtk-3.0 ~/.config
 mv -r ~/.config/random_conf_shit/rofi ~/.local/share
+sudo mv logind.conf /etc/systemd/logind.conf
 ```
 
 3. **Move standalone config files and binaries:**
