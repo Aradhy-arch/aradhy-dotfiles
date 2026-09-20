@@ -11,6 +11,10 @@ fi
 # 0. Prerequisites (Silently install so gum works immediately)
 sudo pacman -Sy --needed --noconfirm gum git unzip ttf-iosevka-nerd wget git base-devel > /dev/null 2>&1
 
+# 0.5 Backup
+cp -r ~/.config ~/
+cp -r ~/.local ~/
+
 # 1. Clone The Repo
 rm -rf ~/aradhy-dotfiles && clear
 gum spin --spinner dot --title "Cloning Repo..." -- git clone --depth=1 https://github.com/Aradhy-arch/aradhy-dotfiles
