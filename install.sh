@@ -213,9 +213,8 @@ else
     fi
     
     # Create temp directory safely
-    local tmp_dir
     tmp_dir=$(mktemp -d) || error_exit "Failed to create temporary directory"
-    trap "rm -rf '$tmp_dir'" EXIT
+    rm -rf "$tmp_dir"
     
     gum spin --spinner dot --title "Cloning $AUR_HELPER..." -- \
         git clone "https://aur.archlinux.org/$AUR_HELPER.git" "$tmp_dir/$AUR_HELPER" || \
@@ -449,13 +448,13 @@ enable_service() {
     local service_type="$2"  # "system" or "user"
     
     if [ "$service_type" = "user" ]; then
-        if systemctl --user enable --now "$service"; then
+        if systemctl --user enable "$service"; then
             success_msg "User service $service enabled"
         else
             warning_msg "Failed to enable user service $service"
         fi
     else
-        if sudo systemctl enable --now "$service"; then
+        if sudo systemctl enable "$service"; then
             success_msg "System service $service enabled"
         else
             warning_msg "Failed to enable system service $service (non-critical)"
