@@ -22,7 +22,7 @@ PACMAN_PKGS=(
     xdg-desktop-portal-hyprland xdg-desktop-portal-gtk qt5-wayland qt6-wayland noto-fonts-cjk noto-fonts-emoji
     pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber
     bluez bluez-utils blueman wf-recorder brightnessctl
-    alacritty discord spotify-launcher mousepad thunar sddm wl-clip-persist
+    alacritty discord spotify-launcher mousepad thunar sddm wl-clip-persist imv mpv
 )
 
 AUR_PKGS=(
@@ -137,6 +137,8 @@ unzip -o ~/Pictures/Wallpapers.zip -d ~/Pictures/ && \
 rm ~/Pictures/Wallpapers.zip"
 
 run_cmd "$WALL_CMD"
+
+
 
 # 9. Enabling Services
 gum style --foreground 220 "➔ Enabling Services (SDDM, Bluetooth, & Daily Wallpaper)..."
