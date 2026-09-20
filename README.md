@@ -24,13 +24,6 @@ The main focus here is how **Wallust** ties the whole desktop together:
 
 ---
 
-### 📸 Screenshots
-
-![Desktop Preview](Screenshots/desktop.png)
-![Fastfetch Specs](Screenshots/fastfetch.png)
-
----
-
 ### ⚙️ System Details
 
 | Component | Choice |
@@ -40,6 +33,13 @@ The main focus here is how **Wallust** ties the whole desktop together:
 | **Shell** | [Fish Shell](https://fishshell.com/) |
 | **Prompt** | [Starship](https://starship.rs/) |
 | **Colorscheme** | [Catppuccin](https://github.com/catppuccin/catppuccin) |
+
+---
+
+### 📸 Screenshots
+
+![Desktop Preview](Screenshots/desktop.png)
+![Fastfetch Preview](Screenshots/fastfetch.png)
 
 ---
 
