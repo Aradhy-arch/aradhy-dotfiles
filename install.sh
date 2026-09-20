@@ -104,6 +104,7 @@ gum style --foreground 220 "➔ Applying configurations..."
 COPY_CMD="mkdir -p ~/.config ~/.local ~/.local/share && \
 cp -r swaync alacritty fastfetch fish hypr random_conf_shit systemd wallust waybar rofi gtk-3.0 ~/.config && \
 cp daily-wall ~/.local && \
+sudo mv logind.conf /etc/systemd/logind.conf && \
 mv ~/.config/random_conf_shit/rofi ~/.local/share && \
 cp starship.catppuccin.toml starship.toml ~/.config"
 
