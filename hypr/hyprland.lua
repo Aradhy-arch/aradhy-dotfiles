@@ -2,7 +2,6 @@
 ---- MONITORS ----
 ------------------
 
--- See https://wiki.hyprland/Configuring/Basics/Monitors/
 hl.monitor({
     output   = "",
     mode     = "preferred",
@@ -18,7 +17,6 @@ hl.monitor({
 -- Set programs that you use
 local terminal = "alacritty"
 local fileManager = "thunar"
-local menu = "rofi -show drun"
 local browser = "helium-browser"
 
 
@@ -30,7 +28,11 @@ hl.on("hyprland.start", function ()
     hl.exec_cmd(terminal)
     hl.exec_cmd("wl-paste --type text --watch cliphist store")
     hl.exec_cmd("wl-paste --type image --watch cliphist store")
-    hl.exec_cmd("waybar & hyprpaper & swaync & udiskie &")
+    hl.exec_cmd("waybar")
+    hl.exec_cmd("hyprpaper")
+    hl.exec_cmd("swaync")
+    hl.exec_cmd("udiskie -t")
+    hl.exec_cmd("wl-clip-persist --clipboard regular")
 end)
 
 
@@ -38,7 +40,6 @@ end)
 ---- ENVIRONMENT VARIABLES ----
 -------------------------------
 
--- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Environment-variables/
 
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
@@ -212,7 +213,7 @@ hl.device({
 local mainMod = "SUPER" 
 
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
-local closeWindowBind = hl.bind(mainMod .. " + R", hl.dsp.window.close())
+local close = hl.bind(mainMod .. " + R", hl.dsp.window.close())
 
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("spotify-launcher"))
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(browser))
@@ -220,7 +221,7 @@ hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + F", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + SUPER_L", hl.dsp.exec_cmd(menu),                                                                                              { release = true })   
+hl.bind(mainMod .. " + SUPER_L", hl.dsp.exec_cmd("pkill -x rofi || rofi -show drun"), {release = true})
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("swaync-client -t -sw"))
 hl.bind(mainMod .. " + U", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))
@@ -243,7 +244,8 @@ for i = 1, 10 do
 end
 
 -- Important Crap
-hl.bind(mainMod .. " + V", hl.dsp.exec_cmd([[bash -c 'cliphist list | rofi -dmenu -p "Clipboard" -config ~/.config/rofi/config.rasi | cliphist decode | wl-copy']]))
+hl.bind(mainMod .. " + V", hl.dsp.exec_cmd([[bash -c 'cliphist list | rofi -dmenu -display-columns 2 -p "Clipboard" -config ~/.config/rofi/config.rasi | cliphist decode | wl-copy && wtype -M ctrl -k v -m ctrl']]))
+hl.bind(mainMod .. " + SHIFT + V", hl.dsp.exec_cmd("cliphist wipe"))
 
 -- Screenshot & Screen Recording
 hl.bind("PRINT", hl.dsp.exec_cmd([[bash -c 'grim -g "$(slurp)" - | wl-copy']]))
