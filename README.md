@@ -137,6 +137,12 @@ rm ~/Pictures/Wallpapers.zip
 ```
 ---
 
+## ⌨️ Keybindings
+
+
+
+---
+
 ## 🎨 Credits & Acknowledgments
 
 * ⭐ Credit to **[Keyitdev](https://github.com/Keyitdev)** for creating the awesome [sddm-astronaut-theme](https://github.com/Keyitdev/sddm-astronaut-theme).
