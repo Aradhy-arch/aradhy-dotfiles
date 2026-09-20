@@ -12,8 +12,12 @@ fi
 sudo pacman -Sy --needed --noconfirm gum git unzip ttf-iosevka-nerd wget git base-devel > /dev/null 2>&1
 
 # 0.5 Backup
-cp -r ~/.config ~/
-cp -r ~/.local ~/
+if gum confirm "Do you want to take backups of your config and local folders?"; then
+    cp -r ~/.config ~/config
+    cp -r ~/.local ~/local
+else
+    echo "Skipping backup."
+fi
 
 # 1. Clone The Repo
 rm -rf ~/aradhy-dotfiles && clear
