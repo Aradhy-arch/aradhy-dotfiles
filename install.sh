@@ -13,8 +13,8 @@ sudo pacman -Sy --needed --noconfirm gum git unzip ttf-iosevka-nerd wget git bas
 
 # 0.5 Backup
 if gum confirm "Do you want to take backups of your config and local folders?"; then
-    cp -r ~/.config ~/config
-    cp -r ~/.local ~/local
+    cp -r ~/.config ~/config_old
+    cp -r ~/.local ~/local_old
 else
     echo "Skipping backup."
 fi
