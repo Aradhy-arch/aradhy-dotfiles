@@ -21,8 +21,8 @@ PACMAN_PKGS=(
     hyprland hyprpaper hyprlock swaync cliphist grim slurp waybar rofi hyprpolkitagent
     xdg-desktop-portal-hyprland xdg-desktop-portal-gtk qt5-wayland qt6-wayland noto-fonts-cjk noto-fonts-emoji
     pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber
-    bluez bluez-utils blueman
-    alacritty discord spotify-launcher mousepad thunar sddm
+    bluez bluez-utils blueman wf-recorder
+    alacritty discord spotify-launcher mousepad thunar sddm wl-clip-persist
 )
 
 AUR_PKGS=(
