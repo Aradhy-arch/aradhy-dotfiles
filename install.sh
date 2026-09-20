@@ -22,11 +22,11 @@ PACMAN_PKGS=(
     xdg-desktop-portal-hyprland xdg-desktop-portal-gtk qt5-wayland qt6-wayland noto-fonts-cjk noto-fonts-emoji
     pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber
     bluez bluez-utils blueman wf-recorder brightnessctl
-    alacritty discord spotify-launcher mousepad thunar sddm wl-clip-persist imv mpv
+    alacritty discord spotify-launcher mousepad thunar sddm wl-clip-persist imv mpv cmatrix
 )
 
 AUR_PKGS=(
-    cbonsai pipes.sh cmatrix wallust lavat volumectl
+    cbonsai pipes.sh wallust lavat volumectl
 )
 
 clear
@@ -139,7 +139,9 @@ rm ~/Pictures/Wallpapers.zip"
 
 run_cmd "$WALL_CMD"
 
-
+mkdir -p ~/.local/share/applications
+cp /usr/share/applications/imv.desktop ~/.local/share/applications/
+sed -i 's/^Exec=.*/Exec=sh -c '\''imv -n "$1" "$(dirname "$1")"'\'' sh %f/' ~/.local/share/applications/imv.desktop
 
 # 9. Enabling Services
 gum style --foreground 220 "➔ Enabling Services (SDDM, Bluetooth, & Daily Wallpaper)..."
