@@ -10,7 +10,6 @@ local menu = "pkill -x rofi || rofi -show drun"
 local mainMod = "SUPER" 
 
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
-local close = hl.bind(mainMod .. " + R", hl.dsp.window.close())
 
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("spotify-launcher"))
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(browser))
@@ -21,6 +20,7 @@ hl.bind(mainMod .. " + F", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + SUPER_L", hl.dsp.exec_cmd(menu), {release = true})
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("swaync-client -t -sw"))
 hl.bind(mainMod .. " + U", hl.dsp.window.pseudo())
+hl.bind(mainMod .. " + R", hl.dsp.window.close())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))
 
 -- Move focus with mainMod + arrow keys
@@ -28,17 +28,6 @@ hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
 hl.bind(mainMod .. " + up",    hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + down",  hl.dsp.focus({ direction = "down" }))
-
--- Switch workspaces with mainMod + [0-9]
-for i = 1, 10 do
-    local key = i % 10
-    hl.bind(mainMod .. " + " .. key,             hl.dsp.focus({ workspace = i}))
-    hl.bind(mainMod .. " + ALT + " .. key,     hl.dsp.window.move({ workspace = i }))
-    hl.bind(mainMod .. " + home", hl.dsp.focus({ workspace = 1}))
-    hl.bind(mainMod .. " + end", hl.dsp.focus({ workspace = 10}))
-    hl.bind(mainMod .. " + ALT + home ",     hl.dsp.window.move({ workspace = 1 }))
-    hl.bind(mainMod .. " + ALT + end ",     hl.dsp.window.move({ workspace = 10 }))
-end
 
 -- Important Crap
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd([[bash -c 'cliphist list | rofi -dmenu -display-columns 2 -p "Clipboard" -config ~/.config/rofi/config.rasi | cliphist decode | wl-copy && wtype -M ctrl -k v -m ctrl']]))
@@ -82,3 +71,14 @@ hl.bind("XF86AudioNext",  hl.dsp.exec_cmd("playerctl next"),       { locked = tr
 hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
+
+-- Workspace Swiching
+for i = 1, 10 do
+    local key = i % 10
+    hl.bind(mainMod .. " + " .. key,             hl.dsp.focus({ workspace = i}))
+    hl.bind(mainMod .. " + ALT + " .. key,     hl.dsp.window.move({ workspace = i }))
+    hl.bind(mainMod .. " + home", hl.dsp.focus({ workspace = 1}))
+    hl.bind(mainMod .. " + end", hl.dsp.focus({ workspace = 10}))
+    hl.bind(mainMod .. " + ALT + home ",     hl.dsp.window.move({ workspace = 1 }))
+    hl.bind(mainMod .. " + ALT + end ",     hl.dsp.window.move({ workspace = 10 }))
+end

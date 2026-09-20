@@ -1,37 +1,40 @@
 #!/usr/bin/env bash
 
 WALL_DIR="$HOME/Pictures/Wallpapers"
-STATE_FILE="$HOME/.cache/wallpaper_index"
 
 # Gather all image files
 mapfile -d '' FILES < <(find "$WALL_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" \) -print0 | sort -z)
 
 TOTAL=${#FILES[@]}
-[ "$TOTAL" -eq 0 ] && exit 1
+# Need at least 2 images to pick two distinct ones
+[ "$TOTAL" -lt 2 ] && exit 1
 
-# Read previous index
-INDEX=0
-if [ -f "$STATE_FILE" ]; then
-    INDEX=$(cat "$STATE_FILE")
-    INDEX=$(( (INDEX + 1) % TOTAL ))
-fi
+# Pick 2 distinct random indices
+IDX1=$(( RANDOM % TOTAL ))
+IDX2=$(( RANDOM % TOTAL ))
+while [ "$IDX1" -eq "$IDX2" ]; do
+    IDX2=$(( RANDOM % TOTAL ))
+done
 
-# Save new index
-echo "$INDEX" > "$STATE_FILE"
-CHOSEN="${FILES[$INDEX]}"
+CHOSEN1="${FILES[$IDX1]}"
+CHOSEN2="${FILES[$IDX2]}"
 
-# Apply the wallpaper directly (monitor can be left blank for fallback)
-hyprctl hyprpaper wallpaper ",$CHOSEN"
+# Apply the first wallpaper directly (monitor can be left blank for fallback)
+hyprctl hyprpaper wallpaper ",$CHOSEN1"
 
+# Save to hyprpaper.conf (Note: changed "~" to $HOME so the path expands correctly)
 cat << EOF > "$HOME/.config/hypr/hyprpaper.conf"
 wallpaper {
     monitor = 
-    path = $CHOSEN
+    path = $CHOSEN1
     fit_mode = cover
 }
 splash = false
 EOF
 
 for MON in $(hyprctl monitors | awk '/Monitor/ {print $2}'); do
-    hyprctl hyprpaper wallpaper "$MON,$CHOSEN" >/dev/null 2>&1
+    hyprctl hyprpaper wallpaper "$MON,$CHOSEN1" >/dev/null 2>&1
 done
+
+# Apply the second image to hyprlock.conf
+sed -i "s|^[[:space:]]*path =.*|    path = $CHOSEN2|" "$HOME/.config/hypr/hyprlock.conf"
