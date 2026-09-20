@@ -58,7 +58,7 @@ info_msg "Installing prerequisites silently (gum, git, unzip, etc.)..."
 PREREQ_PKGS=(gum git unzip ttf-iosevka-nerd wget base-devel)
 
 # Install quietly
-if sudo pacman -Sy --needed --noconfirm "${PREREQ_PKGS[@]}" > /dev/null 2>&1; then
+if sudo pacman -S --needed --noconfirm "${PREREQ_PKGS[@]}" > /dev/null 2>&1; then
     success_msg "Prerequisites installed"
 else
     error_exit "Failed to install prerequisites. Check your internet and pacman configuration."
