@@ -26,8 +26,8 @@ The main focus here is how **Wallust** ties the whole desktop together:
 
 ### 📸 Screenshots
 
-![Desktop Preview](./Screenshots/desktop.png)
-![Fastfetch Specs](./Screenshots/fastfetch.png)
+![Desktop Preview](Screenshots/desktop.png)
+![Fastfetch Specs](Screenshots/fastfetch.png)
 
 ---
 
