@@ -26,7 +26,7 @@ rate-status 5000
 # -----------------------------------------------------------------------------
 set hour-24 on
 set seconds off
-set date on
+set date off
 set auto-size on
 set auto-ratio on
 
