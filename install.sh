@@ -135,7 +135,7 @@ PACMAN_PKGS=(
 )
 
 AUR_PKGS=(
-    cbonsai pipes.sh helium-browser-bin wallust lavat volumectl
+    cbonsai pipes.sh helium-browser-bin wallust lavat volumectl peaclock
 )
 
 ################################################################################
@@ -248,7 +248,7 @@ fi
 
 info_msg "Verifying repository contents..."
 
-for config_dir in swaync alacritty fastfetch fish hypr random_conf_shit systemd wallust waybar rofi gtk-3.0 sddm-astronaut-theme; do
+for config_dir in swaync alacritty fastfetch fish hypr random_conf_shit peaclock systemd wallust waybar rofi gtk-3.0 sddm-astronaut-theme; do
     [ -d "$config_dir" ] || error_exit "Directory not found in repo: $config_dir"
 done
 
@@ -289,6 +289,7 @@ info_msg "Setting up SDDM theme..."
 
 sudo cp -r sddm-astronaut-theme /usr/share/sddm/themes/ || error_exit "Failed to install SDDM theme"
 sudo mkdir -p /etc/sddm.conf.d || error_exit "Failed to create /etc/sddm.conf.d"
+sudo cp /usr/share/sddm/themes/sddm-astronaut-theme/Fonts/* /usr/share/fonts/ || error_exit "Failed to copy SDDM Fonts to /usr/share/fonts"
 printf '[Theme]\nCurrent=sddm-astronaut-theme\n' | sudo tee /etc/sddm.conf.d/theme.conf > /dev/null \
     || error_exit "Failed to write SDDM theme config"
 success_msg "SDDM theme configured"
