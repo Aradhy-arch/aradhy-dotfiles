@@ -191,6 +191,7 @@ rm ~/Pictures/Wallpapers.zip
 | `SUPER + Power Button` | Reboot Menu |
 | `SUPER + ALT + W` | Change Wallpaper |
 | `Media Keys` | Adjust Volume, Mute, Brightness, Play/Pause/Next/Prev |
+| `SUPER + ALT + P` | Peaclock |
 
 ---
 
