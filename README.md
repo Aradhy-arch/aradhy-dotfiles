@@ -57,8 +57,8 @@ bash -c "$(curl -sL https://raw.githubusercontent.com/Aradhy-arch/aradhy-dotfile
 ```
 OR if you want, you can just run:
 ```bash
-git clone --depth=1 [https://github.com/Aradhy-arch/aradhy-dotfiles](https://github.com/Aradhy-arch/aradhy-dotfiles)
-cd aradhy-dotfiles && chmod +x ~/aradhy-dotfiles/install.sh
+git clone --depth=1 https://github.com/Aradhy-arch/aradhy-dotfiles
+cd aradhy-dotfiles && chmod +x install.sh
 ./install.sh
 ```
 ---
