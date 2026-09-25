@@ -1,7 +1,7 @@
 local terminal = "alacritty"
 local fileManager = "thunar"
 local browser = "helium-browser"
-local menu = "pkill -x rofi || rofi -show drun"
+local menu = "rofi -show drun"
 
 ---------------------
 ---- KEYBINDINGS ----
@@ -9,19 +9,21 @@ local menu = "pkill -x rofi || rofi -show drun"
 
 local mainMod = "SUPER" 
 
+-- Basic Stuff
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
-
-hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("spotify-launcher"))
-hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(browser))
-hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
+hl.bind(mainMod .. " + R", hl.dsp.window.close())
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
-hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + F", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + SUPER_L", hl.dsp.exec_cmd(menu), {release = true})
+hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("swaync-client -t -sw"))
 hl.bind(mainMod .. " + U", hl.dsp.window.pseudo())
-hl.bind(mainMod .. " + R", hl.dsp.window.close())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))
+hl.bind(mainMod .. " + SUPER_L", hl.dsp.exec_cmd("pkill -x rofi"), { release = true })
+
+-- Apps & Stuff
+hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(browser))
+hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
+hl.bind(mainMod .. " + ALT + W", hl.dsp.exec_cmd("~/.local/daily-wall"))
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
@@ -44,8 +46,9 @@ hl.bind(mainMod .. " + I", hl.dsp.exec_cmd("~/.config/hypr/scripts/wifi-menu.sh"
 
 -- Power
 hl.bind("XF86PowerOff",               hl.dsp.exec_cmd("~/.config/hypr/scripts/power_menu.sh"))
-hl.bind(mainMod .. " + XF86PowerOff", hl.dsp.exec_cmd("~/.config/hypr/scripts/reboot_menu.sh"))
 hl.bind("switch:on:Lid Switch", hl.dsp.exec_cmd("hyprlock"))
+hl.bind(mainMod .. " + XF86PowerOff", hl.dsp.exec_cmd("~/.config/hypr/scripts/reboot_menu.sh"))
+hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("~/.config/hypr/scripts/logout_menu.sh"))
 
 -- Move/resize windows with mainMod + LMB/RMB and dragging
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
@@ -83,3 +86,24 @@ hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:mag
 -- Scroll through existing workspaces with mainMod + scroll
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
 hl.bind(mainMod .. " + mouse_up",   hl.dsp.focus({ workspace = "e-1" }))
+
+-- #################
+-- #   FUNCTIONS:  #
+-- #################
+
+-- Spotify
+hl.bind(mainMod .. " + P", function()
+    local window = hl.get_window("class:spotify")
+    if window == nil then
+        hl.exec_cmd("spotify-launcher")
+    end
+    hl.dispatch(hl.dsp.workspace.toggle_special("music"))
+end)
+
+-- Peaclock
+hl.bind(mainMod .. " + ALT + P",
+  hl.dsp.exec_cmd("alacritty --class Peaclock -e peaclock", {
+    float = true,
+    size  = {300 , 170},
+  })
+)

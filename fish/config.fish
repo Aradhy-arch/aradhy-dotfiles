@@ -32,9 +32,10 @@ if status is-interactive
     alias openfish "nano ~/.config/fish/config.fish"
     abbr -a pa "sudo pacman -S"
     abbr -a ya "yay -S"
+    abbr -a aria2 "aria2c -x 16 -s 16"
     alias ff "fastfetch"
 
-    # Modern CLI Replacements
+    # Modern CLI Replacements 
     abbr -a gc "git clone --depth=1"
     alias ls "eza --icons=always --group-directories-first"
     alias ll "eza -lah --icons=always --group-directories-first"
@@ -59,3 +60,5 @@ if status is-interactive
     # You can add your custom functions here :D
 
 end
+
+fish_add_path /home/aradhy/.spicetify

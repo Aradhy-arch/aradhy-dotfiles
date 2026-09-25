@@ -1,0 +1,10 @@
+style active-fg {{background.hex}}
+style inactive-fg {{color8.hex}}
+style colon-fg {{color8.hex}}
+style active-bg {{color4.hex}}
+style inactive-bg {{background.hex}}
+style colon-bg {{background.hex}}
+style date {{foreground.hex}}
+style background {{background.hex}}
+style text {{foreground.hex}}
+style prompt {{color4.hex}}

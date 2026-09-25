@@ -8,6 +8,8 @@ palette = "saliencedark"
 alacritty = { template = 'alacritty.toml', target = '~/.config/alacritty/colors.toml' }
 starship = { template = 'starship.toml', target = '~/.config/starship.toml' }
 hyprpaper = { template = 'set_bg.sh', target = '~/.config/wallust/set_bg.sh' }
+peaclock.template = 'peaclock-config'
+peaclock.target = '~/.config/peaclock/config'
 
 [hooks]
 set_bg = 'sh ~/.config/wallust/set_bg.sh'

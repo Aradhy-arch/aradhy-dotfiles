@@ -36,7 +36,7 @@ hl.window_rule({
     float = true,
 })
 
--- Swaync Blur
+-- Swaync
 hl.layer_rule({
     name = "blur-swaync-cc",
     match = { namespace = "swaync-control-center" },
@@ -49,4 +49,11 @@ hl.layer_rule({
     match = { namespace = "swaync-notification-window" },
     blur = true,
     ignore_alpha = 0.5
+})
+
+-- Spotify
+hl.window_rule({
+    name  = "spotify-special-ws",
+    match = { class = "spotify" },
+    workspace = "special:music silent",
 })

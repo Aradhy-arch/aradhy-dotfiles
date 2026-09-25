@@ -1,0 +1,13 @@
+backend = "fastresize"
+color_space = "labmixed"
+palette = "saliencedark"
+
+[templates]
+peaclock.template = 'peaclock-config'
+peaclock.target = '~/.peaclock/config'
+
+hyprpaper.template = 'set_bg.sh'
+hyprpaper.target = '~/.config/wallust/set_bg.sh'
+
+[hooks]
+set_bg = 'sh ~/.config/wallust/set_bg.sh'

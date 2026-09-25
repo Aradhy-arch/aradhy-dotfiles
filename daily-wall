@@ -1,40 +1,44 @@
 #!/usr/bin/env bash
 
 WALL_DIR="$HOME/Pictures/Wallpapers"
+HISTORY_FILE="$HOME/.config/hypr/.wallpaper_history"
+touch "$HISTORY_FILE"
 
-# Gather all image files
-mapfile -d '' FILES < <(find "$WALL_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" \) -print0 | sort -z)
+# Gather image files, excluding previously used ones
+mapfile -d '' FILES < <(
+  find "$WALL_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" \) -print0 |
+  while IFS= read -r -d '' f; do
+    grep -qxF "$f" "$HISTORY_FILE" || printf '%s\0' "$f"
+  done | sort -z
+)
+
+# If fewer than 2 remain, reset history and use full pool
+if [ "${#FILES[@]}" -lt 2 ]; then
+  : > "$HISTORY_FILE"
+  mapfile -d '' FILES < <(find "$WALL_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" \) -print0 | sort -z)
+fi
 
 TOTAL=${#FILES[@]}
-# Need at least 2 images to pick two distinct ones
 [ "$TOTAL" -lt 2 ] && exit 1
 
 # Pick 2 distinct random indices
 IDX1=$(( RANDOM % TOTAL ))
 IDX2=$(( RANDOM % TOTAL ))
 while [ "$IDX1" -eq "$IDX2" ]; do
-    IDX2=$(( RANDOM % TOTAL ))
+  IDX2=$(( RANDOM % TOTAL ))
 done
 
 CHOSEN1="${FILES[$IDX1]}"
 CHOSEN2="${FILES[$IDX2]}"
 
-# Apply the first wallpaper directly (monitor can be left blank for fallback)
-hyprctl hyprpaper wallpaper ",$CHOSEN1"
+# Record both in history
+printf '%s\n%s\n' "$CHOSEN1" "$CHOSEN2" >> "$HISTORY_FILE"
 
-# Save to hyprpaper.conf (Note: changed "~" to $HOME so the path expands correctly)
-cat << EOF > "$HOME/.config/hypr/hyprpaper.conf"
-wallpaper {
-    monitor = 
-    path = $CHOSEN1
-    fit_mode = cover
-}
-splash = false
-EOF
+# Apply second image to hyprlock.conf
+sed -i "s|^[[:space:]]*path =.*|    path = $CHOSEN2|" "$HOME/.config/hypr/hyprlock.conf"   
 
-for MON in $(hyprctl monitors | awk '/Monitor/ {print $2}'); do
-    hyprctl hyprpaper wallpaper "$MON,$CHOSEN1" >/dev/null 2>&1
-done
+# Generate and apply custom wallust colour template 
+wallust run "$CHOSEN1" -C "$HOME/.config/wallust/wallust-peaclock.toml" --skip-sequences --quiet > /dev/null 2>&1
 
-# Apply the second image to hyprlock.conf
-sed -i "s|^[[:space:]]*path =.*|    path = $CHOSEN2|" "$HOME/.config/hypr/hyprlock.conf"
+# Manually trigger the background update 
+sh ~/.config/wallust/set_bg.sh > /dev/null 2>&1
