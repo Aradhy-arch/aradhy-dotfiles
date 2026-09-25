@@ -1,0 +1,48 @@
+{
+  "$schema": "/etc/xdg/swaync/configSchema.json",
+  "positionX": "right",
+  "positionY": "top",
+
+  "control-center-width": 400,
+  "control-center-margin-top": 10,
+  "control-center-margin-bottom": 10,
+  "control-center-margin-right": 10,
+
+  "notification-window-width": 350,
+
+  "widgets": [
+    "title",
+    "dnd",
+    "mpris",
+    "notifications",
+    "menubar"
+  ],
+  "widget-config": {
+    "menubar": {
+      "menu#power": {
+        "label": "󰐥",
+        "position": "right",
+        "animation-type": "slide_up",
+        "animation-duration": 250,
+        "actions": [
+          { "label": "󰐥  Power Off", "command": "swaync-client -cp; nohup bash ~/.config/hypr/scripts/power_menu.sh >/dev/null 2>&1 &"},
+          { "label": "󰜉  Reboot",   "command": "swaync-client -cp; nohup bash ~/.config/hypr/scripts/reboot_menu.sh >/dev/null 2>&1 &"},
+          { "label": "󰍃  Logout",   "command": "swaync-client -cp; nohup bash ~/.config/hypr/scripts/logout_menu.sh >/dev/null 2>&1 &"}
+        ]
+      }
+    },
+    "title": {
+      "text": "Notifications",
+      "clear-all-button": true,
+      "button-text": "Clear All"
+    },
+    "mpris": {
+      "image-size": 96,
+      "image-radius": 12,
+      "autohide": true,
+      "show-album-art": "always",
+      "loop-carousel": false,
+      "blacklist": ["playerctld"]
+    }
+  }
+}

@@ -1,8 +1,5 @@
 * {
-  all: unset;
-  font-size: 14px;
   font-family: "Iosevka Nerd Font";
-  transition: 200ms;
 }
 
 trough highlight {
@@ -60,7 +57,6 @@ trough {
 }
 
 .notification .notification-content overlay {
-  /* icons */
   margin: 4px;
 }
 
@@ -102,10 +98,7 @@ trough {
   box-shadow: inset 0 0 0 1px #45475a;
   margin: 4px;
   padding: 8px;
-  font-size: 0.2rem; /* controls the button size not text size*/
-}
-
-.notification .notification-action {
+  font-size: 0.85rem;
   background-color: #313244;
 }
 
@@ -135,11 +128,11 @@ trough {
 
 /* control center */
 .control-center {
-  background: rgba(30, 30, 46, 0.75);
   box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.8), inset 0 0 0 1px #313244;
   border-radius: 12.6px;
   color: #cdd6f4;
   padding: 14px; 
+  background: rgba(30, 30, 46, 0.75);
 }
 
 .control-center .notification-background {
@@ -203,7 +196,6 @@ scrollbar trough {
 }
 
 .widget-dnd > switch {
-  font-size: initial;
   border-radius: 8px;
   background: #313244;
   box-shadow: none;
@@ -232,7 +224,7 @@ scrollbar trough {
 }
 
 .widget-mpris-album-art {
-  -gtk-icon-size: 100px;
+  -gtk-icon-size: 96px;
   border-radius: 12.6px;
   margin: 0 10px;
 }
@@ -255,39 +247,67 @@ scrollbar trough {
 }
 
 .widget-mpris button image {
-  -gtk-icon-size: 1.8rem;
+  -gtk-icon-size: 24px;
 }
 
 .widget-mpris button:hover {
-  background-color: #313244;
+  background-color: #45475a;
 }
 
 .widget-mpris button:active {
-  background-color: #45475a;
+  background-color: #585b70;
 }
 
 .widget-mpris button:disabled {
   opacity: 0.5;
 }
 
-.widget-menubar > box > .menu-button-bar > button > label {
-  font-size: 3rem;
-  padding: 0.5rem 2rem;
+/* menubar */
+.widget-menubar > box > .menu-button-bar > button {
+  border-radius: 8px;
+  background: transparent;
+  padding: 4px 10px;
+  margin: 0;
 }
 
-.widget-menubar > box > .menu-button-bar > :last-child {
+.widget-menubar > box > .menu-button-bar > button:hover {
+  background: #313244;
+}
+
+.widget-menubar > box > .menu-button-bar > button > label {
+  font-size: 1.3rem;
+  color: #cdd6f4;
+  padding: 0;
+}
+
+/* menubar dropdown */
+.topbar-drop-down {
+  background: #1e1e2e;
+  border-radius: 8px;
+  border: 1px solid #45475a;
+  padding: 6px;
+  margin: 6px 0;
+}
+
+.topbar-drop-down button {
+  border-radius: 6px;
+  padding: 6px 12px;
+  margin: 2px 0;
+  color: #cdd6f4;
+}
+
+.topbar-drop-down button:hover {
+  background: #313244;
   color: #f38ba8;
 }
 
-.power-buttons button:hover,
-.powermode-buttons button:hover,
-.screenshot-buttons button:hover {
-  background: #313244;
+.topbar-drop-down button label {
+  color: #cdd6f4;
 }
 
 .control-center .widget-label > label {
   color: #cdd6f4;
-  font-size: 2rem;
+  font-size: 1.3rem;
 }
 
 .widget-buttons-grid {
@@ -295,7 +315,7 @@ scrollbar trough {
 }
 
 .widget-buttons-grid > flowbox > flowboxchild > button label {
-  font-size: 2.5rem;
+  font-size: 1.5rem;
 }
 
 .widget-volume {
@@ -316,7 +336,7 @@ scrollbar trough {
 }
 
 .widget-backlight label {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: #f9e2af;
 }
 

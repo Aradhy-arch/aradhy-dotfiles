@@ -51,6 +51,18 @@ hl.layer_rule({
     ignore_alpha = 0.5
 })
 
+hl.layer_rule({
+    name = "anim-swaync-cc",
+    match = { namespace = "swaync-control-center" },
+    animation = "slide right"
+})
+
+hl.layer_rule({
+    name = "anim-swaync-notif",
+    match = { namespace = "swaync-notification-window" },
+    animation = "slide"
+})
+
 -- Spotify
 hl.window_rule({
     name  = "spotify-special-ws",
