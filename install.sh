@@ -2,7 +2,6 @@
 
 ################################################################################
 # Aradhy's Arch Dotfiles Installer
-# Must be run as a normal user (NOT root) with sudo access.
 ################################################################################
 
 # -e: exit on error, -E: let the ERR trap fire inside functions too
@@ -127,7 +126,7 @@ PACMAN_PKGS=(
     fish btop zoxide fzf fastfetch starship eza bat micro neovim qt6-svg qt6-virtualkeyboard qt6-multimedia-ffmpeg
     hyprland hyprpaper hyprlock swaync cliphist grim slurp waybar rofi hyprpolkitagent hypridle hyprsunset
     xdg-desktop-portal-hyprland xdg-desktop-portal-gtk qt5-wayland qt6-wayland noto-fonts-cjk noto-fonts-emoji
-    pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber
+    pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber wtype
     bluez bluez-utils blueman wf-recorder brightnessctl
     alacritty discord spotify-launcher mousepad thunar xarchiver thunar-archive-plugin sddm wl-clip-persist imv mpv cmatrix
 )
