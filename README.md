@@ -142,6 +142,9 @@ rm ~/Pictures/Wallpapers.zip
 
 ## ⌨️ Keybindings
 
+> [!NOTE]
+> **All The Keybindings Can Easily Be Changed In `~/.config/hypr/configs/keybinds.lua`**
+
 ### Applications & System
 | Keybind | Action |
 | :--- | :--- |
@@ -149,7 +152,8 @@ rm ~/Pictures/Wallpapers.zip
 | `SUPER + W` | Open Browser (Helium) |
 | `SUPER + E` | Open File Manager (Thunar) |
 | `SUPER + P` | Open Spotify |
-| `SUPER + SUPER_L` | Open App Launcher (Rofi) |
+| `SUPER + SPACEBAR` | Open App Launcher |
+| `SUPER` | Kill Menus |
 | `SUPER + N` | Notification Center (Swaync) |
 | `SUPER + V` | Open Clipboard Manager |
 | `SUPER + SHIFT + V` | Wipe Clipboard |
@@ -178,13 +182,14 @@ rm ~/Pictures/Wallpapers.zip
 | Keybind | Action |
 | :--- | :--- |
 | `PRINT` | Screenshot to Clipboard |
-| `SUPER + CTRL + S` | Screenshot to `~/Pictures/Screenshots/` |
+| `SUPER + CTRL + S` | Take screenshot |
 | `SUPER + G` | Screen Record |
 | `SUPER + B` | Bluetooth Menu |
 | `SUPER + I` | Wi-Fi Menu |
 | `SUPER + L` | Lock Screen |
 | `Power Button` | Power Menu |
 | `SUPER + Power Button` | Reboot Menu |
+| `SUPER + ALT + W` | Change Wallpaper |
 | `Media Keys` | Adjust Volume, Mute, Brightness, Play/Pause/Next/Prev |
 
 ---
