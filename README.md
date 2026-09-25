@@ -122,11 +122,13 @@ echo -e "[Theme]\nCurrent=sddm-astronaut-theme" | sudo tee /etc/sddm.conf.d/them
 ```bash
 chmod +x ~/.config/random_conf_shit/sddmtheme.sh
 chmod +x ~/.config/random_conf_shit/usb_formatter.sh
+chmod +x ~/.config/wallust/templates/set_bg.sh
+chmod +x ~/.config/wallust/set_bg.sh
 chmod +x ~/.local/daily-wall
 chmod +x ~/.config/hypr/scripts/wifi-menu.sh
 chmod +x ~/.config/hypr/scripts/power_menu.sh
+chmod +x ~/.config/hypr/scripts/logout_menu.sh
 chmod +x ~/.config/hypr/scripts/reboot_menu.sh
-chmod +x ~/.config/wallust/templates/set_bg.sh
 chmod +x ~/.config/hypr/scripts/rofi-bluetooth.sh
 chmod +x ~/.config/hypr/scripts/screen-record.sh
 ```
