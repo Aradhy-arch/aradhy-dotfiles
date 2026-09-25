@@ -82,7 +82,7 @@ This just Installs Audio, and Bluetooth dependencies along with needed apps. You
 
 1. **Clone the repo:**
 ```bash
-git clone --depth=1 [https://github.com/Aradhy-arch/aradhy-dotfiles](https://github.com/Aradhy-arch/aradhy-dotfiles)
+git clone --depth=1 https://github.com/Aradhy-arch/aradhy-dotfiles
 cd aradhy-dotfiles
 ```
 
