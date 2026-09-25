@@ -8,8 +8,6 @@
 # -e: exit on error, -E: let the ERR trap fire inside functions too
 set -eE
 
-# Warnings are collected here and printed again at the very end
-# (otherwise a later 'clear' would wipe them before you could read them)
 WARNINGS=()
 LOG_FILE="/tmp/aradhy-dotfiles-install.log"
 
@@ -266,7 +264,7 @@ cp -r swaync alacritty fastfetch fish hypr random_conf_shit systemd wallust wayb
     || error_exit "Failed to copy configuration files"
 success_msg "Configuration files copied to ~/.config"
 
-mv peaclock ~/.config/.peaclock
+mv peaclock ~/.config/.peaclock || error_exit "Failed to copy peaclock configuration files"
 
 cp daily-wall ~/.local/ || error_exit "Failed to copy daily-wall"
 success_msg "daily-wall copied"
