@@ -76,7 +76,7 @@ cd aradhy-dotfiles && chmod +x ~/aradhy-dotfiles/install.sh
 ### Manual Install:-
 * Before You Install it manually, you need the required packages, and the recommended packages (assuming you use yay), just run this very short command:
 ```bash
-sudo pacman -S --needed fish btop zoxide fzf fastfetch starship eza bat micro neovim qt6-svg qt6-virtualkeyboard qt6-multimedia-ffmpeg hyprland hyprpaper hyprlock swaync cliphist grim slurp waybar rofi hyprpolkitagent hypridle hyprsunset xdg-desktop-portal-hyprland xdg-desktop-portal-gtk qt5-wayland qt6-wayland noto-fonts-cjk noto-fonts-emoji pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber bluez bluez-utils blueman wf-recorder brightnessctl alacritty discord spotify-launcher mousepad thunar xarchiver thunar-archive-plugin sddm wl-clip-persist imv mpv cmatrix && yay -S --needed volumectl cbonsai lavat wallust pipes.sh helium-browser-bin peaclock
+sudo pacman -S --needed fish btop zoxide fzf fastfetch starship eza bat micro neovim qt6-svg qt6-virtualkeyboard qt6-multimedia-ffmpeg hyprland hyprpaper hyprlock swaync cliphist grim slurp waybar rofi hyprpolkitagent hypridle hyprsunset xdg-desktop-portal-hyprland xdg-desktop-portal-gtk qt5-wayland qt6-wayland noto-fonts-cjk noto-fonts-emoji pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber bluez bluez-utils blueman wf-recorder brightnessctl alacritty discord spotify-launcher mousepad thunar xarchiver thunar-archive-plugin sddm wl-clip-persist imv mpv cmatrix && yay -S --needed cbonsai pipes.sh helium-browser-bin wallust lavat volumectl peaclock
 ```
 This just Installs Audio, and Bluetooth dependencies along with needed apps. You have to enable the services yourself I ain't gonna tell everything here so just search it up :p
 
@@ -99,8 +99,8 @@ cp -r wallust ~/.config
 cp -r waybar ~/.config
 cp -r rofi ~/.config
 cp -r gtk-3.0 ~/.config
-mv -r ~/.config/random_conf_shit/rofi ~/.local/share
-sudo mv logind.conf /etc/systemd/logind.conf
+mv peaclock ~/.config/.peaclock
+mv ~/.config/random_conf_shit/rofi ~/.local/share
 ```
 
 3. **Move standalone config files and binaries:**
@@ -108,6 +108,7 @@ sudo mv logind.conf /etc/systemd/logind.conf
 cp daily-wall ~/.local
 cp starship.catppuccin.toml ~/.config
 cp starship.toml ~/.config
+sudo mv logind.conf /etc/systemd/logind.conf
 ```
 
 4. **Apply the SDDM theme:**
