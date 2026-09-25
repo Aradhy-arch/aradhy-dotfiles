@@ -12,7 +12,8 @@ wallpaper {
     monitor =
     path = /home/aradhy/Pictures/Wallpapers/evening-sky.png
     fit_mode = cover
-    splash = false
 }
+
+splash = false
 
 EOF
