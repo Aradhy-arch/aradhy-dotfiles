@@ -266,6 +266,8 @@ cp -r swaync alacritty fastfetch fish hypr random_conf_shit systemd wallust wayb
     || error_exit "Failed to copy configuration files"
 success_msg "Configuration files copied to ~/.config"
 
+mv peaclock ~/.config/.peaclock
+
 cp daily-wall ~/.local/ || error_exit "Failed to copy daily-wall"
 success_msg "daily-wall copied"
 
@@ -303,11 +305,13 @@ info_msg "Setting executable permissions..."
 SCRIPTS=(
     ~/.config/random_conf_shit/sddmtheme.sh
     ~/.config/random_conf_shit/usb_formatter.sh
+    ~/.config/wallust/templates/set_bg.sh
+    ~/.config/wallust/set_bg.sh
     ~/.local/daily-wall
     ~/.config/hypr/scripts/wifi-menu.sh
     ~/.config/hypr/scripts/power_menu.sh
+    ~/.config/hypr/scripts/logout_menu.sh
     ~/.config/hypr/scripts/reboot_menu.sh
-    ~/.config/wallust/templates/set_bg.sh
     ~/.config/hypr/scripts/rofi-bluetooth.sh
     ~/.config/hypr/scripts/screen-record.sh
 )
