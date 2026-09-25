@@ -12,7 +12,8 @@ wallpaper {
     monitor =
     path = {{wallpaper}}
     fit_mode = cover
-    splash = false
 }
+
+splash = false
 
 EOF
